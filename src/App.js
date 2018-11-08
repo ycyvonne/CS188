@@ -1,9 +1,14 @@
 import React, { Component } from 'react'
-import { css } from 'react-emotion'
+import Button from './components/Button'
 
 class App extends Component {
   render() {
-    return <h1>hello world</h1>
+    return (
+      <>
+        <Button />
+        <h1>hello world</h1>
+      </>
+    )
   }
 }
 
