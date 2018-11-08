@@ -7,6 +7,7 @@ types:
 "minus"
 "trash"
 "cook"
+"x"
 */
 
 class Button extends Component {
