@@ -26,6 +26,9 @@ const App = () => (
         width: 420px;
         background: white;
         height: 100%;
+        > div {
+          height: 100%;
+        }
       `}
     >
       <Router>
