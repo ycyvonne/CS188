@@ -6,8 +6,11 @@
     "start": "./node_modules/.bin/react-scripts start",
     "build": "./node_modules/.bin/react-scripts build",
     "test": "./node_modules/.bin/react-scripts test",
-    "eject": "./node_modules/.bin/react-scripts eject"
+    "eject": "./node_modules/.bin/react-scripts eject",
+    "predeploy": "yarn run build",
+    "deploy": "node node_modules/gh-pages/bin/gh-pages.js -d build"
   },
+  "homepage": "https://yvonneCh.github.io/cs188",
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -34,6 +37,7 @@
     "@fortawesome/react-fontawesome": "^0.1.3",
     "@reach/router": "^1.2.1",
     "emotion": "^9.2.12",
+    "history": "^4.7.2",
     "jquery": "^3.3.1",
     "normalize.css": "^8.0.0",
     "react": "^16.6.1",
@@ -42,6 +46,7 @@
     "react-scripts": "2.1.1"
   },
   "devDependencies": {
+    "gh-pages": "^2.0.1",
     "husky": "^1.1.3",
     "lint-staged": "^8.0.4",
     "prettier": "^1.15.1"

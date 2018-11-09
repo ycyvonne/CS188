@@ -2,12 +2,15 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Router } from '@reach/router'
 import { css } from 'react-emotion'
+import createHashHistory from 'history/createHashHistory';
 
 import 'normalize.css'
 import './global/globalStyles'
 
 import RecipeSearch from './pages/RecipeSearch'
 import IngredientsPage from './pages/IngredientsPage'
+
+const hashHistory = createHashHistory({ basename: process.env.PUBLIC_URL });
 
 const App = () => (
   <div
@@ -28,9 +31,9 @@ const App = () => (
         position: relative;
       `}
     >
-      <Router>
-        <IngredientsPage path="/" />
-        <RecipeSearch path="search" />
+      <Router history={hashHistory}>
+        <IngredientsPage path={process.env.PUBLIC_URL + "/"} />
+        <RecipeSearch path={process.env.PUBLIC_URL + "/search"} />
       </Router>
     </div>
   </div>
