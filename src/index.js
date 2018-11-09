@@ -29,10 +29,10 @@ const App = () => (
       `}
     >
       <Router>
-        <IngredientsPage path="/" />
-        <RecipeSearch path="search" />
-        <RecipeCustomize path="recipe-customize" />
-        <IngredientAdd path="ingredient-add" />
+        <IngredientsPage path={process.env.PUBLIC_URL + '/'} />
+        <RecipeSearch path={process.env.PUBLIC_URL + '/search'} />
+        <RecipeCustomize path={process.env.PUBLIC_URL + ' /recipe-customize'} />
+        <IngredientAdd path={process.env.PUBLIC_URL + 'ingredient-add'} />
       </Router>
     </div>
   </div>
