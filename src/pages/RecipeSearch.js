@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import { css } from 'react-emotion'
+
+import Page from '../components/Page'
 import Input from '../components/Input'
+import Header from '../components/Header'
 
 import backArrow from '../assets/icons/arrow-dark.png'
 import searchButton from '../assets/icons/search.png'
@@ -9,7 +12,7 @@ import searchBarcode from '../assets/icons/search-barcode.png'
 class RecipeSearch extends Component {
   render() {
     return (
-      <div>
+      <Page>
         <img
           src={backArrow}
           className={css`
@@ -17,15 +20,7 @@ class RecipeSearch extends Component {
             height: 30px;
           `}
         />
-        <div
-          className={css`
-            margin: 10px;
-            font-weight: bold;
-            font-size: 36px;
-          `}
-        >
-          What ingredient are you looking for?
-        </div>
+        <Header>What ingredient are you looking for?</Header>
         <Input />
         <img
           src={searchButton}
@@ -39,7 +34,7 @@ class RecipeSearch extends Component {
             width: 100%;
           `}
         />
-      </div>
+      </Page>
     )
   }
 }
