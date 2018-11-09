@@ -6,6 +6,7 @@ const Header = props => (
     className={css`
       margin-top: 22px;
       margin-bottom: 16px;
+      ${props.style}
     `}
   >
     {props.children}

@@ -9,6 +9,7 @@ const Page = props => (
       display: flex;
       align-items: flex-start;
       justify-content: center;
+      height: 100vh;
     `}
   >
     <div
