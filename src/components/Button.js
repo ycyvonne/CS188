@@ -18,13 +18,12 @@ class Button extends Component {
     if (this.props.light) {
       themeStyles = {
         background: 'white',
-        color: 'red'
+        color: 'red',
       }
-    }
-    else {
+    } else {
       themeStyles = {
         background: 'red',
-        color: 'white'
+        color: 'white',
       }
     }
 

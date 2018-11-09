@@ -1,5 +1,5 @@
 const numbers = {
-    borderRadius: '8px'
+  borderRadius: '8px',
 }
 
 export default numbers

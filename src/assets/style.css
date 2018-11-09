@@ -1,7 +1,7 @@
 .card-selection-overlay.select-mode {
-    opacity: 1;
+  opacity: 1;
 }
 
-.card-selection-overlay.select-mode.selected .card-selection-circle{
-    background: red;
+.card-selection-overlay.select-mode.selected .card-selection-circle {
+  background: red;
 }
