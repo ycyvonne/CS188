@@ -16,6 +16,7 @@ class App extends Component {
         <Button light={true}>+</Button>
         <Input />
         <Card
+          quantity='1 ct.'
           image="https://5.imimg.com/data5/IK/WX/MY-5776850/chicken-breast-boneless-500x500.jpg"
           text="Chicken Breast"/>
         <Card
