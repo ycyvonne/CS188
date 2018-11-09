@@ -35,11 +35,15 @@ class Button extends Component {
           background: ${themeStyles.background};
           border-radius: 50%;
           box-shadow: ${shadows.default};
-          font-size: 24px;
+          font-size: 40px;
           font-weight: bold;
-          width: 45px;
-          height: 45px;
+          width: ${this.props.width};
+          height: ${this.props.height};
           border: none;
+          cursor: pointer;
+          :focus {
+            outline: none;
+          }
         `}
         onClick={this.props.onClick}
       >
