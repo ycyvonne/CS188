@@ -3,10 +3,33 @@ import { css } from 'react-emotion'
 
 import IngredientsPage from './pages/ingredients-page'
 import ActionBar from './components/ActionBar';
+
+import RecipeSearch from './pages/recipe-search';
+
 import './global/globalStyles'
 
 class App extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      currentPage: 'recipe-search'
+    }
+  }
+
   render() {
+    let page;
+    if (this.state.currentPage == 'recipe-search') {
+      page = <RecipeSearch/>
+    }
+    else {
+      page = <>
+        <IngredientsPage />
+        <ActionBar />
+      </>
+    }
+
     return (
       <div className={css`
         display: flex;
@@ -22,8 +45,7 @@ class App extends Component {
           min-height: 100%;
           position: relative;
         `}>
-          <IngredientsPage />
-          <ActionBar />
+          {page}
         </div>
       </div>
     )
