@@ -7,7 +7,9 @@ import 'normalize.css'
 import './global/globalStyles'
 
 import RecipeSearch from './pages/RecipeSearch'
+import RecipeCustomize from './pages/RecipeCustomize'
 import IngredientsPage from './pages/IngredientsPage'
+import IngredientAdd from './pages/IngredientAdd'
 
 const App = () => (
   <div
@@ -16,21 +18,21 @@ const App = () => (
       align-item: center;
       justify-content: center;
       background: black;
-      min-height: 100vh;
+      height: 100vh;
     `}
   >
     <div
       className={css`
-        width: 360px;
+        width: 420px;
         background: white;
-        padding: 10px;
-        min-height: 100%;
-        position: relative;
+        height: 100%;
       `}
     >
       <Router>
         <IngredientsPage path="/" />
         <RecipeSearch path="search" />
+        <RecipeCustomize path="recipe-customize" />
+        <IngredientAdd path="ingredient-add" />
       </Router>
     </div>
   </div>
