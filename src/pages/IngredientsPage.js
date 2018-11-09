@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import { css } from 'react-emotion'
 
 import Header from '../components/Header'
 import Card from '../components/Card'
 import Page from '../components/Page'
+import ActionBar from '../components/ActionBar';
 
 class IngredientsPage extends Component {
   state = {
@@ -32,7 +32,10 @@ class IngredientsPage extends Component {
         />
       ))
     }
-    return <Page>{ingredientsView}</Page>
+    return <Page>
+      {ingredientsView}
+      <ActionBar/>
+      </Page>
   }
 }
 
