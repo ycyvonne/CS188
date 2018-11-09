@@ -1,27 +1,52 @@
 import React, { Component } from 'react'
 import { css } from 'react-emotion'
-import Button from './components/Button'
-import Input from './components/Input'
-import Card from './components/Card'
+
+import IngredientsPage from './pages/ingredients-page'
+import ActionBar from './components/ActionBar';
+
+import RecipeSearch from './pages/recipe-search';
+
 import './global/globalStyles'
 
 class App extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      currentPage: ''
+    }
+  }
+
   render() {
+    let page;
+    if (this.state.currentPage == 'recipe-search') {
+      page = <RecipeSearch/>
+    }
+    else {
+      page = <>
+        <IngredientsPage />
+        <ActionBar />
+      </>
+    }
+
     return (
-      <div
-        className={css`
-          max-width: 500px;
-        `}
-      >
-        <Button />
-        <Input />
-        <Card
-          image="https://5.imimg.com/data5/IK/WX/MY-5776850/chicken-breast-boneless-500x500.jpg"
-          text="Chicken Breast"/>
-        <Card
-          image="https://5.imimg.com/data5/IK/WX/MY-5776850/chicken-breast-boneless-500x500.jpg"
-          text="Chicken Breast"/>
-        <h1>hello world</h1>
+      <div className={css`
+        display: flex;
+        align-item: center;
+        justify-content: center;
+        background: black;
+        min-height: 100vh;
+      `}>
+        <div className={css`
+          width: 360px;
+          background: white;
+          padding: 10px;
+          min-height: 100%;
+          position: relative;
+        `}>
+          {page}
+        </div>
       </div>
     )
   }

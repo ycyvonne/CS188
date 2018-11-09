@@ -15,6 +15,7 @@ class Input extends Component {
           border: none;
           width: 100%;
           padding: 16px 10px;
+          margin: 10px 0;
           font-size: 14px;
           color: black;
           font-weight: bold;
