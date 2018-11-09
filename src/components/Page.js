@@ -2,6 +2,7 @@ import React from 'react'
 import { css } from 'react-emotion'
 
 import backArrow from '../assets/icons/arrow-dark.png'
+import ActionBar from '../components/ActionBar'
 
 const Page = props => (
   <div
@@ -16,9 +17,8 @@ const Page = props => (
       className={css`
         display: flex;
         flex-direction: column;
-        align-items: center;
         height: 100%;
-        max-width: 480px;
+        width: 100%;
         padding: 24px 16px;
       `}
     >
@@ -38,6 +38,7 @@ const Page = props => (
         </div>
       )}
       {props.children}
+      <ActionBar/>
     </div>
   </div>
 )
