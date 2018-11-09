@@ -13,7 +13,7 @@ class App extends Component {
           max-width: 500px;
         `}
       >
-        <Button />
+        <Button light={true}>+</Button>
         <Input />
         <Card
           image="https://5.imimg.com/data5/IK/WX/MY-5776850/chicken-breast-boneless-500x500.jpg"
