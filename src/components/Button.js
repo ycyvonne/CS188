@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { css } from 'react-emotion'
 
+import shadows from '../global/shadows'
+
 /*
 types:
 "plus"
@@ -18,7 +20,7 @@ class Button extends Component {
           color: red;
           background: white;
           border-radius: 50%;
-          box-shadow: 1px 0 20px 6px #eaeaea;
+          box-shadow: ${shadows.default};
           font-size: 24px;
           font-weight: bold;
           width: 70px;
