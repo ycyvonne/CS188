@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { css } from 'react-emotion'
 
 import colors from '../global/colors'
+import numbers from '../global/numbers'
 
 class Input extends Component {
   render() {
@@ -10,7 +11,7 @@ class Input extends Component {
         placeholder="Ex. Vegetables, Chicken, Dairy, etc."
         className={css`
           background: ${colors.darkGray};
-          border-radius: 8px;
+          border-radius: ${numbers.borderRadius};
           border: none;
           width: 100%;
           padding: 16px 10px;
