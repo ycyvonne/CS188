@@ -1,12 +1,9 @@
 import React, { Component } from 'react'
 import { css } from 'react-emotion'
 
-import IngredientsPage from './pages/ingredients-page'
+import IngredientsPage from './pages/IngredientsPage'
 import ActionBar from './components/ActionBar'
-
-import RecipeSearch from './pages/recipe-search'
-
-import './global/globalStyles'
+import RecipeSearch from './pages/RecipeSearch'
 
 class App extends Component {
   state = {

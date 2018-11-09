@@ -3,19 +3,15 @@ import { css } from 'react-emotion'
 import Card from '../components/Card'
 
 class IngredientsPage extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      ingredients: [
-        {
-          quantity: '1 ct.',
-          image:
-            'https://5.imimg.com/data5/IK/WX/MY-5776850/chicken-breast-boneless-500x500.jpg',
-          text: 'Chicken Breast',
-        },
-      ],
-    }
+  state = {
+    ingredients: [
+      {
+        quantity: '1 ct.',
+        image:
+          'https://5.imimg.com/data5/IK/WX/MY-5776850/chicken-breast-boneless-500x500.jpg',
+        text: 'Chicken Breast',
+      },
+    ],
   }
 
   render() {
