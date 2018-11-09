@@ -4,7 +4,6 @@ import { css } from 'react-emotion'
 import Page from '../components/Page'
 import Header from '../components/Header'
 import Counter from '../components/Counter'
-import TagSelector from '../components/TagSelector'
 import FullWidthButton from '../components/FullWidthButton'
 
 class IngredientAdd extends Component {

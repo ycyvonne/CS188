@@ -49,7 +49,7 @@ class Card extends Component {
             box-shadow: ${shadows.default};
             border-radius: ${numbers.borderRadius};
             width: 100%;
-            height: 70px;
+            height: 60px;
             display: flex;
             margin-bottom: 15px;
             overflow: hidden;
@@ -107,8 +107,8 @@ class Card extends Component {
           className={
             'card-text ' +
             css`
-              padding: 20px;
-              font-size: 20px;
+              padding: 16px;
+              font-size: 14px;
               font-family: ${fonts.header};
               font-weight: bold;
               display: flex;
