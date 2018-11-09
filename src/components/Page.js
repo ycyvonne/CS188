@@ -38,6 +38,19 @@ const Page = props => (
         </div>
       )}
       {props.children}
+      {!!props.bottomBar && (
+        <div
+          className={css`
+            flex: 1;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+          `}
+        >
+          {props.bottomBar}
+        </div>
+      )}
     </div>
   </div>
 )

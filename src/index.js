@@ -6,6 +6,7 @@ import 'normalize.css'
 import './global/globalStyles'
 
 import RecipeSearch from './pages/RecipeSearch'
+import RecipeCustomize from './pages/RecipeCustomize'
 import IngredientsPage from './pages/IngredientsPage'
 
 const App = () => (
@@ -13,6 +14,7 @@ const App = () => (
     <Router>
       <IngredientsPage path="/" />
       <RecipeSearch path="search" />
+      <RecipeCustomize path="recipe-customize" />
     </Router>
   </div>
 )
