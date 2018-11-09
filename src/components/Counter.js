@@ -8,21 +8,23 @@ const Counter = props => (
     className={css`
       display: grid;
       width: 100%;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: ${!!props.label ? '1fr 1fr' : '1fr'};
       margin: 30px 0;
       align-items: center;
       justify-content: center;
     `}
   >
-    <label
-      className={css`
-        justify-self: left;
-        font-weight: bold;
-        text-align: left;
-      `}
-    >
-      {props.label}
-    </label>
+    {props.label && (
+      <label
+        className={css`
+          justify-self: left;
+          font-weight: bold;
+          text-align: left;
+        `}
+      >
+        {props.label}
+      </label>
+    )}
     <div
       className={css`
         display: grid;
