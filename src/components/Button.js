@@ -14,24 +14,20 @@ types:
 
 class Button extends Component {
   render() {
-    let themeStyles = {}
-    if (this.props.light) {
-      themeStyles = {
-        background: 'white',
-        color: 'red',
-      }
-    } else {
-      themeStyles = {
-        background: 'red',
-        color: 'white',
-      }
-    }
+    const themeStyles = this.props.light
+      ? css`
+          background: white;
+          color: red;
+        `
+      : css`
+          background: red;
+          color: white;
+        `
 
     return (
       <button
         className={css`
-          color: ${themeStyles.color};
-          background: ${themeStyles.background};
+          ${themeStyles}
           border-radius: 50%;
           box-shadow: ${shadows.default};
           font-size: 40px;
