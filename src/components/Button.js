@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { css } from 'react-emotion'
 
 import shadows from '../global/shadows'
+import pan from '../assets/icons/pan.svg'
 
 /*
 types:
@@ -27,13 +28,14 @@ class Button extends Component {
     let renderSymbol
     switch (this.props.type) {
       case 'plus':
+        renderSymbol = '+'
         break
-
       case 'minus':
         break
       case 'trash':
         break
       case 'cook':
+        renderSymbol = <img src={pan} />
         break
 
       default:
@@ -44,7 +46,10 @@ class Button extends Component {
       <button
         className={css`
           ${themeStyles}
-          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: ${this.props.type === 'cook' ? '32px' : '50%'};
           box-shadow: ${shadows.default};
           font-size: 40px;
           font-weight: bold;
@@ -55,10 +60,11 @@ class Button extends Component {
           :focus {
             outline: none;
           }
+          ${this.props.className}
         `}
         onClick={this.props.onClick}
       >
-        {this.props.children}
+        {renderSymbol}
       </button>
     )
   }
