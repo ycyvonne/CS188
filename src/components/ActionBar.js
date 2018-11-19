@@ -18,12 +18,14 @@ class ActionBar extends Component {
           `}
           type="plus"
           light={true}
+          to="/ingredient-search"
         />
         <Button
           className={css`
             justify-self: right;
           `}
           type="cook"
+          to="/"
         />
       </div>
     )

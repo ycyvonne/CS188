@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { css } from 'react-emotion'
+import { navigate } from '@reach/router'
 
 import shadows from '../global/shadows'
 import pan from '../assets/icons/pan.svg'
@@ -46,7 +47,7 @@ class Button extends Component {
       <button
         className={css`
           ${themeStyles}
-          display: flex;
+            display: flex;
           align-items: center;
           justify-content: center;
           border-radius: ${this.props.type === 'cook' ? '32px' : '50%'};
@@ -56,13 +57,14 @@ class Button extends Component {
           width: ${this.props.type === 'cook' ? '140px' : '64px'};
           height: 64px;
           border: none;
+          text-decoration: none;
           cursor: pointer;
           :focus {
             outline: none;
           }
           ${this.props.className}
         `}
-        onClick={this.props.onClick}
+        onClick={() => navigate(this.props.to)}
       >
         {renderSymbol}
       </button>
