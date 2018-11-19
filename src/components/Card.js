@@ -3,7 +3,7 @@ import { css } from 'react-emotion'
 import '../assets/style.css'
 
 import shadows from '../global/shadows'
-import numbers from '../global/numbers'
+import borderRadii from '../global/borderRadii'
 import fonts from '../global/fonts'
 import $ from 'jquery'
 
@@ -11,25 +11,23 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
 
 class Card extends Component {
+  state = {
+    selectMode: false,
+  }
+
   constructor(props) {
     super(props)
     this.parentRef = React.createRef()
-    this.toggleSelectMode = this.toggleSelectMode.bind(this)
-    this.toggleSelect = this.toggleSelect.bind(this)
-
-    this.state = {
-      selectMode: false,
-    }
   }
 
-  toggleSelectMode() {
+  toggleSelectMode = () => {
     $(this.parentRef.current)
       .find('.card-selection-overlay')
       .toggleClass('select-mode')
     this.setState({ selectMode: !this.state.selectMode })
   }
 
-  toggleSelect() {
+  toggleSelect = () => {
     if (this.state.selectMode) {
       $(this.parentRef.current)
         .find('.card-selection-overlay')
@@ -47,7 +45,7 @@ class Card extends Component {
           css`
             background: white;
             box-shadow: ${shadows.default};
-            border-radius: ${numbers.borderRadius};
+            border-radius: ${borderRadii.small};
             width: 100%;
             height: 60px;
             display: flex;

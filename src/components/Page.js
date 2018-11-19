@@ -1,7 +1,7 @@
 import React from 'react'
 import { css } from 'react-emotion'
 
-import backArrow from '../assets/icons/arrow-dark.png'
+import backArrow from '../assets/icons/arrow-left.svg'
 
 const Page = props => (
   <div

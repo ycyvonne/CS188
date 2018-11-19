@@ -6,8 +6,8 @@ import Input from '../components/Input'
 import Header from '../components/Header'
 import Divider from '../components/Divider'
 
-import searchButton from '../assets/icons/search.png'
-import searchBarcode from '../assets/icons/search-barcode.png'
+// import searchButton from '../assets/icons/search.png'
+import searchBarcode from '../assets/icons/barcode.png'
 
 class RecipeSearch extends Component {
   render() {
@@ -15,12 +15,12 @@ class RecipeSearch extends Component {
       <Page backButton={true}>
         <Header>What ingredient are you looking for?</Header>
         <Input />
-        <img
+        {/* <img
           src={searchButton}
           className={css`
             width: 100%;
           `}
-        />
+        /> */}
         <Divider />
         <img
           src={searchBarcode}

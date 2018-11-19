@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { css } from 'react-emotion'
 import Button from './Button'
-import cookIcon from '../assets/icons/cook.png'
+import cookIcon from '../assets/icons/cook.svg'
 
 class ActionBar extends Component {
   render() {
