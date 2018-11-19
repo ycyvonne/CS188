@@ -3,6 +3,7 @@ import { css } from 'react-emotion'
 import { navigate } from '@reach/router'
 
 import shadows from '../global/shadows'
+import colors from '../global/colors'
 import pan from '../assets/icons/pan.svg'
 
 /*
@@ -18,12 +19,12 @@ class Button extends Component {
   render() {
     const themeStyles = this.props.light
       ? css`
-          background: white;
-          color: red;
+          background: ${colors.white};
+          color: ${colors.red};
         `
       : css`
-          background: red;
-          color: white;
+          background: ${colors.red};
+          color: ${colors.white};
         `
 
     let renderSymbol

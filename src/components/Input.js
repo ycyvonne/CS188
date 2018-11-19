@@ -10,7 +10,7 @@ class Input extends Component {
       <input
         placeholder="Ex. Vegetables, Chicken, Dairy, etc."
         className={css`
-          background: ${colors.darkGray};
+          background: ${colors.lightGray};
           border-radius: ${borderRadii.small};
           border: none;
           width: 100%;
