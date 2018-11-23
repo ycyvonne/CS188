@@ -6,7 +6,7 @@ import { css } from 'react-emotion'
 import 'normalize.css'
 import './global/globalStyles'
 
-import RecipeSearch from './pages/RecipeSearch'
+import IngredientSearch from './pages/IngredientSearch'
 import RecipeCustomize from './pages/RecipeCustomize'
 import IngredientsPage from './pages/IngredientsPage'
 import IngredientAdd from './pages/IngredientAdd'
@@ -33,9 +33,9 @@ const App = () => (
     >
       <Router>
         <IngredientsPage path="/" />
-        <RecipeSearch path="search" />
-        <RecipeCustomize path="recipe-customize" />
+        <IngredientSearch path="ingredient-search" />
         <IngredientAdd path="ingredient-add" />
+        <RecipeCustomize path="recipe-customize" />
       </Router>
     </div>
   </div>

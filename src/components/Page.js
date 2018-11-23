@@ -1,7 +1,7 @@
 import React from 'react'
 import { css } from 'react-emotion'
 
-import backArrow from '../assets/icons/arrow-dark.png'
+import backArrow from '../assets/icons/arrow-left.svg'
 
 const Page = props => (
   <div
@@ -12,7 +12,6 @@ const Page = props => (
       height: 100%;
       width: 100%;
       padding: 24px 16px;
-      position: relative;
     `}
   >
     {props.backButton && (
@@ -31,7 +30,19 @@ const Page = props => (
       </div>
     )}
     {props.children}
-    {!!props.bottomBar && props.bottomBar}
+    {!!props.bottomBar && (
+      <div
+        className={css`
+          flex: 1;
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+        `}
+      >
+        {props.bottomBar}
+      </div>
+    )}
   </div>
 )
 

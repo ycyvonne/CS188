@@ -1,41 +1,32 @@
 import React, { Component } from 'react'
 import { css } from 'react-emotion'
 import Button from './Button'
-import cookIcon from '../assets/icons/cook.png'
 
 class ActionBar extends Component {
   render() {
     return (
       <div
-        className={
-          'action-bar ' +
-          css`
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            padding: 20px;
-            width: 100%;
-          `
-        }
+        className={css`
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          width: 100%;
+        `}
       >
-        <div
+        <Button
           className={css`
-            position: relative;
+            justify-self: left;
           `}
-        >
-          <Button light={true} width="50px" height="50px">
-            +
-          </Button>
-          <img
-            src={cookIcon}
-            className={css`
-              position: absolute;
-              right: 0;
-              height: 50px;
-              cursor: pointer;
-            `}
-          />
-        </div>
+          type="plus"
+          light={true}
+          to="/ingredient-search"
+        />
+        <Button
+          className={css`
+            justify-self: right;
+          `}
+          type="cook"
+          to="/"
+        />
       </div>
     )
   }

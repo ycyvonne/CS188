@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import { css } from 'react-emotion'
+import { navigate } from '@reach/router'
 
 import shadows from '../global/shadows'
+import colors from '../global/colors'
+import pan from '../assets/icons/pan.svg'
 
 /*
 types:
@@ -14,39 +17,57 @@ types:
 
 class Button extends Component {
   render() {
-    let themeStyles = {}
-    if (this.props.light) {
-      themeStyles = {
-        background: 'white',
-        color: 'red',
-      }
-    } else {
-      themeStyles = {
-        background: 'red',
-        color: 'white',
-      }
+    const themeStyles = this.props.light
+      ? css`
+          background: ${colors.white};
+          color: ${colors.red};
+        `
+      : css`
+          background: ${colors.red};
+          color: ${colors.white};
+        `
+
+    let renderSymbol
+    switch (this.props.type) {
+      case 'plus':
+        renderSymbol = '+'
+        break
+      case 'minus':
+        break
+      case 'trash':
+        break
+      case 'cook':
+        renderSymbol = <img src={pan} />
+        break
+
+      default:
+        break
     }
 
     return (
       <button
         className={css`
-          color: ${themeStyles.color};
-          background: ${themeStyles.background};
-          border-radius: 50%;
+          ${themeStyles}
+            display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: ${this.props.type === 'cook' ? '32px' : '50%'};
           box-shadow: ${shadows.default};
           font-size: 40px;
           font-weight: bold;
-          width: ${this.props.width};
-          height: ${this.props.height};
+          width: ${this.props.type === 'cook' ? '140px' : '64px'};
+          height: 64px;
           border: none;
+          text-decoration: none;
           cursor: pointer;
           :focus {
             outline: none;
           }
+          ${this.props.className}
         `}
-        onClick={this.props.onClick}
+        onClick={() => navigate(this.props.to)}
       >
-        {this.props.children}
+        {renderSymbol}
       </button>
     )
   }
