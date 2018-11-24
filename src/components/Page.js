@@ -1,7 +1,8 @@
 import React from 'react'
 import { css } from 'react-emotion'
 
-import backArrow from '../assets/icons/arrow-left.svg'
+import LeftArrow from './LeftArrow'
+import colors from '../global/colors'
 
 const Page = props => (
   <div
@@ -20,13 +21,7 @@ const Page = props => (
           width: 100%;
         `}
       >
-        <img
-          src={backArrow}
-          className={css`
-            width: 30px;
-            height: 30px;
-          `}
-        />
+        <LeftArrow color={colors.black} />
       </div>
     )}
     {props.children}

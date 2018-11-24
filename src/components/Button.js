@@ -33,13 +33,13 @@ class Button extends Component {
         renderSymbol = '+'
         break
       case 'minus':
+        renderSymbol = '-'
         break
       case 'trash':
         break
       case 'cook':
         renderSymbol = <img src={pan} />
         break
-
       default:
         break
     }
