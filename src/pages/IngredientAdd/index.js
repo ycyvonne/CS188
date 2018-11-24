@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { css } from 'react-emotion'
 
-import Page from '../components/Page'
-import Header from '../components/Header'
-import Counter from '../components/Counter'
-import FullWidthButton from '../components/FullWidthButton'
+import Page from '../../components/Page'
+import Header from '../../components/Header'
+import Counter from '../../components/Counter'
+import FullWidthButton from '../../components/FullWidthButton'
 
 class IngredientAdd extends Component {
   render() {
