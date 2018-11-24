@@ -1,13 +1,13 @@
-const globalMargins = {
-  xxtiny: 2,
-  xtiny: 4,
-  tiny: 8,
-  xsmall: 12,
-  small: 16,
-  medium: 24,
-  mediumLarge: 32,
-  large: 40,
-  xlarge: 64,
+const margins = {
+  xxtiny: '2px',
+  xtiny: '4px',
+  tiny: '8px',
+  xsmall: '12px',
+  small: '16px',
+  medium: '24px',
+  mediumLarge: '32px',
+  large: '40px',
+  xlarge: '64px',
 }
 
-export default globalMargins
+export default margins

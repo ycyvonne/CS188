@@ -10,12 +10,13 @@ import IngredientSearch from './pages/IngredientSearch'
 import RecipeCustomize from './pages/RecipeCustomize'
 import IngredientsPage from './pages/IngredientsPage'
 import IngredientAdd from './pages/IngredientAdd'
+import RecipeSelect from './pages/RecipeSelect'
+import RecipePage from './pages/RecipePage'
 
 const App = () => (
   <div
     className={css`
       display: flex;
-      align-item: center;
       justify-content: center;
       background: black;
       height: 100vh;
@@ -36,6 +37,8 @@ const App = () => (
         <IngredientSearch path="ingredient-search" />
         <IngredientAdd path="ingredient-add" />
         <RecipeCustomize path="recipe-customize" />
+        <RecipeSelect path="recipe-select" />
+        <RecipePage path="recipe-page" />
       </Router>
     </div>
   </div>
