@@ -4,14 +4,14 @@ import { css } from 'react-emotion'
 import Page from '../components/Page'
 import Header from '../components/Header'
 
-class RecipeSelect extends Component {
+class IngredientSearchResults extends Component {
   render() {
     return (
       <Page backButton={true}>
-        <Header>Results based off your ingredients</Header>
+        <Header>Results similar to “{this.props.searchTerm}”</Header>
       </Page>
     )
   }
 }
 
-export default RecipeSelect
+export default IngredientSearchResults
