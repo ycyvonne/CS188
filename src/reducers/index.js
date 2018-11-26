@@ -5,9 +5,9 @@ const ingredientsList = (state = [], action) => {
         return state
       }
       return [...state, action.ingredient]
-    case 'REMOVE_INGREDIENT':
+    case 'REMOVE_INGREDIENTS':
       return state.filter(
-        ingredient => ingredient.name !== action.ingredientName
+        ingredient => !action.ingredientNames.includes(ingredient.name)
       )
     default:
       return state

@@ -7,6 +7,8 @@ import colors from '../global/colors'
 import margins from '../global/margins'
 import pan from '../assets/icons/pan.svg'
 import check from '../assets/icons/check.svg'
+import trash from '../assets/icons/trash.png'
+import x from '../assets/icons/x.svg'
 
 /*
 types:
@@ -42,11 +44,15 @@ class Button extends Component {
         renderSymbol = '-'
         break
       case 'trash':
+        renderSymbol = <img src={trash} />
         break
       case 'cook':
         renderSymbol = <img src={pan} />
         borderRadius = '32px'
         width = '140px'
+        break
+      case 'x':
+        renderSymbol = <img src={x} />
         break
       case 'select':
         renderSymbol = (
