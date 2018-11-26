@@ -9,7 +9,6 @@ import './global/globalStyles'
 import IngredientSearch from './pages/IngredientSearchResults'
 import RecipeCustomize from './pages/RecipeCustomize'
 import IngredientsPage from './pages/IngredientsPage'
-import IngredientAdd from './pages/IngredientAdd'
 import RecipeSearchResults from './pages/RecipeSearchResults'
 import RecipePage from './pages/RecipePage'
 import IngredientSearchResults from './pages/IngredientSearchResults'
@@ -37,7 +36,6 @@ const App = () => (
         <IngredientsPage path="/" />
         <IngredientSearch path="ingredient-search" />
         <IngredientSearchResults path="ingredient-search-results" />
-        <IngredientAdd path="ingredient-add" />
         <RecipeCustomize path="recipe-customize" />
         <RecipeSearchResults path="recipe-search-results" />
         <RecipePage path="recipe-page" />
