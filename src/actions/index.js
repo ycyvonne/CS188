@@ -3,7 +3,7 @@ export const addIngredient = ingredient => ({
   ingredient,
 })
 
-export const removeIngredient = ingredient => ({
-  type: 'REMOVE_INGREDIENT',
-  id: ingredient.id,
+export const removeIngredients = ingredients => ({
+  type: 'REMOVE_INGREDIENTS',
+  ingredientNames: ingredients.map(ingredient => ingredient.name),
 })

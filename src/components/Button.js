@@ -4,7 +4,11 @@ import { navigate } from '@reach/router'
 
 import shadows from '../global/shadows'
 import colors from '../global/colors'
+import margins from '../global/margins'
 import pan from '../assets/icons/pan.svg'
+import check from '../assets/icons/check.svg'
+import trash from '../assets/icons/trash.png'
+import x from '../assets/icons/x.svg'
 
 /*
 types:
@@ -13,6 +17,7 @@ types:
 "trash"
 "cook"
 "x"
+"select"
 */
 
 class Button extends Component {
@@ -28,6 +33,9 @@ class Button extends Component {
         `
 
     let renderSymbol
+    let borderRadius = '50%'
+    let width = '64px'
+    let height = width
     switch (this.props.type) {
       case 'plus':
         renderSymbol = '+'
@@ -36,10 +44,40 @@ class Button extends Component {
         renderSymbol = '-'
         break
       case 'trash':
+        renderSymbol = <img src={trash} />
         break
       case 'cook':
         renderSymbol = <img src={pan} />
+        borderRadius = '32px'
+        width = '140px'
         break
+      case 'x':
+        renderSymbol = <img src={x} />
+        break
+      case 'select':
+        renderSymbol = (
+          <div
+            className={css`
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 18px;
+              color: ${colors.black};
+            `}
+          >
+            <img src={check} />
+            <span
+              className={css`
+                margin-left: ${margins.xtiny};
+              `}
+            >
+              Select
+            </span>
+          </div>
+        )
+        borderRadius = '32px'
+        width = '100px'
+        height = '40px'
       default:
         break
     }
@@ -48,15 +86,15 @@ class Button extends Component {
       <button
         className={css`
           ${themeStyles}
-            display: flex;
+          display: flex;
           align-items: center;
           justify-content: center;
-          border-radius: ${this.props.type === 'cook' ? '32px' : '50%'};
+          border-radius: ${borderRadius};
           box-shadow: ${shadows.default};
           font-size: 40px;
           font-weight: bold;
-          width: ${this.props.type === 'cook' ? '140px' : '64px'};
-          height: 64px;
+          width: ${width};
+          height: ${height};
           border: none;
           text-decoration: none;
           cursor: pointer;
@@ -65,7 +103,13 @@ class Button extends Component {
           }
           ${this.props.className}
         `}
-        onClick={() => navigate(this.props.to)}
+        onClick={
+          this.props.onClick
+            ? this.props.onClick
+            : this.props.to
+            ? () => navigate(this.props.to)
+            : null
+        }
       >
         {renderSymbol}
       </button>

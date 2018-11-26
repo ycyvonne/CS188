@@ -7,8 +7,6 @@ import Header from '../components/Header'
 import Divider from '../components/Divider'
 import FullWidthButton from '../components/FullWidthButton'
 
-import searchBarcode from '../assets/icons/barcode.png'
-
 class IngredientSearch extends Component {
   inputRef = React.createRef()
 
@@ -32,16 +30,6 @@ class IngredientSearch extends Component {
           onChange={this.inputTextChange}
         />
         <FullWidthButton label="Search" to={this.state.searchText} />
-        {/* <Divider />
-        <FullWidthButton
-          light={true}
-          label={
-            <>
-              <img src={searchBarcode} />
-              Find by Barcode
-            </>
-          }
-        /> */}
       </Page>
     )
   }

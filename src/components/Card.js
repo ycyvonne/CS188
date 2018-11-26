@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { css } from 'react-emotion'
 
 import shadows from '../global/shadows'
+import colors from '../global/colors'
 import borderRadii from '../global/borderRadii'
 import fonts from '../global/fonts'
 
@@ -14,6 +15,11 @@ class Card extends Component {
   }
 
   render() {
+    const backgroundImage =
+      (this.props.selectable
+        ? `linear-gradient(${colors.gray}, ${colors.gray}), `
+        : '') + `url('${this.props.image}')`
+
     return (
       <div
         onClick={this.props.onClick}
@@ -31,24 +37,27 @@ class Card extends Component {
       >
         <div
           className={css`
-            background-image: url('${this.props.image}');
+            background-image: ${backgroundImage};
             background-size: 120%;
             background-position: 50% 50%;
             height: 100%;
             width: 90px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
           `}
         >
-          <div
-            className={css`
-              opacity: 0;
-              width: 100%;
-              height: 100%;
-              background: rgba(0, 0, 0, 0.4);
-              display: flex;
-              align-items: center;
-              justify-content: center;
-            `}
-          />
+          {this.props.selectable && (
+            <div
+              className={css`
+                height: 36px;
+                width: 36px;
+                border: 3px solid #ffffff;
+                border-radius: 50%;
+                ${this.props.selected ? `background-color: ${colors.red}` : ''}
+              `}
+            />
+          )}
         </div>
         <div
           className={css`
