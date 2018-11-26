@@ -11,13 +11,8 @@ class IngredientsPage extends Component {
     if (this.props.ingredients.length === 0) {
       ingredientsView = <Header>You have no ingredients.</Header>
     } else {
-      ingredientsView = this.props.ingredients.map((item, i) => (
-        <Card
-          key={i}
-          quantity={item.quantity}
-          image={item.image}
-          text={item.text}
-        />
+      ingredientsView = this.props.ingredients.map((ingredient, i) => (
+        <Card key={i} image={ingredient.image} text={ingredient.name} />
       ))
     }
     return <Page bottomBar={<ActionBar />}>{ingredientsView}</Page>

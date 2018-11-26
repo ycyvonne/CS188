@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { css } from 'react-emotion'
+import { navigate } from '@reach/router'
 
 import Page from '../../components/Page'
 import Header from '../../components/Header'
@@ -20,6 +21,11 @@ class IngredientSearchResults extends Component {
     this.setState({ results: data })
   }
 
+  selectResult = ingredient => {
+    this.props.addIngredient(ingredient)
+    navigate('/')
+  }
+
   render() {
     return (
       <Page backButton={true}>
@@ -27,10 +33,9 @@ class IngredientSearchResults extends Component {
         {this.state.results.map((result, i) => (
           <Card
             text={result.name}
-            image={`https://spoonacular.com/cdn/ingredients_100x100/${
-              result.image
-            }`}
+            image={result.image}
             key={i}
+            onClick={() => this.selectResult(result)}
           />
         ))}
       </Page>

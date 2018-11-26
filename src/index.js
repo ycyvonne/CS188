@@ -8,16 +8,19 @@ import { css } from 'react-emotion'
 import 'normalize.css'
 import './global/globalStyles'
 
-import IngredientSearch from './pages/IngredientSearch'
-import RecipeCustomize from './pages/RecipeCustomize'
 import IngredientsPage from './pages/IngredientsPage/container'
+import IngredientSearch from './pages/IngredientSearch'
+import IngredientSearchResults from './pages/IngredientSearchResults/container'
+import RecipeCustomize from './pages/RecipeCustomize'
 import RecipeSearchResults from './pages/RecipeSearchResults'
 import RecipePage from './pages/RecipePage'
-import IngredientSearchResults from './pages/IngredientSearchResults'
 
 import ingredientsList from './reducers'
 
-const store = createStore(ingredientsList)
+const store = createStore(
+  ingredientsList,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+)
 
 const App = () => (
   <div

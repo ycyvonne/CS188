@@ -16,6 +16,7 @@ class Card extends Component {
   render() {
     return (
       <div
+        onClick={this.props.onClick}
         className={css`
           background: white;
           box-shadow: ${shadows.default};
@@ -25,6 +26,7 @@ class Card extends Component {
           display: flex;
           margin-bottom: 15px;
           overflow: hidden;
+          cursor: ${!!this.props.onClick ? 'pointer' : 'default'};
         `}
       >
         <div
