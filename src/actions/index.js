@@ -5,5 +5,5 @@ export const addIngredient = ingredient => ({
 
 export const removeIngredient = ingredient => ({
   type: 'REMOVE_INGREDIENT',
-  id: ingredient.id,
+  ingredientName: ingredient.name,
 })
