@@ -1,17 +1,26 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
 import { Router } from '@reach/router'
 import { css } from 'react-emotion'
 
 import 'normalize.css'
 import './global/globalStyles'
 
+import IngredientsPage from './pages/IngredientsPage/container'
 import IngredientSearch from './pages/IngredientSearch'
+import IngredientSearchResults from './pages/IngredientSearchResults/container'
 import RecipeCustomize from './pages/RecipeCustomize'
-import IngredientsPage from './pages/IngredientsPage'
-import IngredientAdd from './pages/IngredientAdd'
-import RecipeSelect from './pages/RecipeSelect'
+import RecipeSearchResults from './pages/RecipeSearchResults'
 import RecipePage from './pages/RecipePage'
+
+import ingredientsList from './reducers'
+
+const store = createStore(
+  ingredientsList,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+)
 
 const App = () => (
   <div
@@ -35,13 +44,18 @@ const App = () => (
       <Router>
         <IngredientsPage path="/" />
         <IngredientSearch path="ingredient-search" />
-        <IngredientAdd path="ingredient-add" />
+        <IngredientSearchResults path="ingredient-search/:ingredient" />
         <RecipeCustomize path="recipe-customize" />
-        <RecipeSelect path="recipe-select" />
+        <RecipeSearchResults path="recipe-search-results" />
         <RecipePage path="recipe-page" />
       </Router>
     </div>
   </div>
 )
 
-ReactDOM.render(<App />, document.getElementById('root'))
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+)

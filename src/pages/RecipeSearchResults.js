@@ -4,7 +4,7 @@ import { css } from 'react-emotion'
 import Page from '../components/Page'
 import Header from '../components/Header'
 
-class RecipeSelect extends Component {
+class RecipeSearchResults extends Component {
   render() {
     return (
       <Page backButton={true}>
@@ -14,4 +14,4 @@ class RecipeSelect extends Component {
   }
 }
 
-export default RecipeSelect
+export default RecipeSearchResults
