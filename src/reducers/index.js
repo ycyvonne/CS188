@@ -1,4 +1,4 @@
-const ingredients = (state = [], action) => {
+const ingredientsList = (state = [], action) => {
   switch (action.type) {
     case 'ADD_INGREDIENT':
       return [...state, action.ingredient]
@@ -8,3 +8,5 @@ const ingredients = (state = [], action) => {
       return state
   }
 }
+
+export default ingredientsList

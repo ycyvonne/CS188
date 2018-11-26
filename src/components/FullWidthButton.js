@@ -1,5 +1,6 @@
 import React from 'react'
 import { css } from 'react-emotion'
+import { Link } from '@reach/router'
 
 import colors from '../global/colors'
 
@@ -14,7 +15,7 @@ const FullWidthButton = props => {
         color: ${colors.white};
       `
   return (
-    <div
+    <Link
       className={css`
         ${themeStyles}
         border-radius: 32px;
@@ -25,10 +26,12 @@ const FullWidthButton = props => {
         padding: 16px;
         width: 100%;
         font-weight: bold;
+        text-decoration: none;
       `}
+      to={props.to}
     >
       <div>{props.label}</div>
-    </div>
+    </Link>
   )
 }
 
