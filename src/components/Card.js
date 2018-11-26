@@ -42,8 +42,23 @@ class Card extends Component {
             background-position: 50% 50%;
             height: 100%;
             width: 90px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
           `}
-        />
+        >
+          {this.props.selectable && (
+            <div
+              className={css`
+                height: 36px;
+                width: 36px;
+                border: 3px solid #ffffff;
+                border-radius: 50%;
+                ${this.props.selected ? `background-color: ${colors.red}` : ''}
+              `}
+            />
+          )}
+        </div>
         <div
           className={css`
             padding: 16px;

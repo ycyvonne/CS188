@@ -11,10 +11,20 @@ import margins from '../../global/margins'
 class IngredientsPage extends Component {
   state = {
     selectMode: false,
+    selectedButtons: Array.apply(
+      null,
+      Array(this.props.ingredients.length)
+    ).map(() => false),
   }
 
   toggleSelectState = () =>
     this.setState({ selectMode: !this.state.selectMode })
+
+  toggleButtonSelect = i => {
+    const { selectedButtons } = this.state
+    selectedButtons[i] = !selectedButtons[i]
+    this.setState({ selectedButtons })
+  }
 
   render() {
     let ingredientsView
@@ -43,6 +53,8 @@ class IngredientsPage extends Component {
               image={ingredient.image}
               text={ingredient.name}
               selectable={this.state.selectMode}
+              selected={this.state.selectedButtons[i]}
+              onClick={() => this.toggleButtonSelect(i)}
             />
           ))}
         </>
