@@ -13,6 +13,9 @@ class IngredientsPage extends Component {
     selectMode: false,
   }
 
+  toggleSelectState = () =>
+    this.setState({ selectMode: !this.state.selectMode })
+
   render() {
     let ingredientsView
     if (this.props.ingredients.length === 0) {
@@ -28,10 +31,19 @@ class IngredientsPage extends Component {
               margin-bottom: ${margins.xsmall};
             `}
           >
-            <Button light={true} type="select" />
+            <Button
+              light={true}
+              type="select"
+              onClick={this.toggleSelectState}
+            />
           </div>
           {this.props.ingredients.map((ingredient, i) => (
-            <Card key={i} image={ingredient.image} text={ingredient.name} />
+            <Card
+              key={i}
+              image={ingredient.image}
+              text={ingredient.name}
+              selectable={this.state.selectMode}
+            />
           ))}
         </>
       )

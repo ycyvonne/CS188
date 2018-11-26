@@ -97,7 +97,13 @@ class Button extends Component {
           }
           ${this.props.className}
         `}
-        onClick={() => navigate(this.props.to)}
+        onClick={
+          this.props.onClick
+            ? this.props.onClick
+            : this.props.to
+            ? () => navigate(this.props.to)
+            : null
+        }
       >
         {renderSymbol}
       </button>
