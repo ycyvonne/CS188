@@ -24,7 +24,7 @@ class IngredientSearch extends Component {
         <Header>What ingredient are you looking for?</Header>
         <Input
           ref={this.inputRef}
-          autofocus={true}
+          autoFocus={true}
           placeholder="Ex. Vegetables, Chicken, Dairy, etc."
           value={this.state.searchText}
           onChange={this.inputTextChange}
