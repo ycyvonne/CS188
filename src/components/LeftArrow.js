@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from '@reach/router'
 
 const LeftArrow = props => (
-  <Link to="../">
+  <Link to={props.to}>
     <svg
       width="32"
       height="32"

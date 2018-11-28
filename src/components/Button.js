@@ -97,16 +97,17 @@ class Button extends Component {
           height: ${height};
           border: none;
           text-decoration: none;
-          cursor: pointer;
+          opacity: ${this.props.disabled ? 0.4 : 1};
+          cursor: ${this.props.disabled ? 'auto' : 'pointer'};
           :focus {
             outline: none;
           }
           ${this.props.className}
         `}
         onClick={
-          this.props.onClick
+          this.props.onClick && !this.props.disabled
             ? this.props.onClick
-            : this.props.to
+            : this.props.to && !this.props.disabled
             ? () => navigate(this.props.to)
             : null
         }

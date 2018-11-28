@@ -110,6 +110,7 @@ class IngredientsPage extends Component {
           `}
           type="cook"
           to="/recipe-search-results"
+          disabled={this.props.ingredients.length === 0}
         />
       </>
     )

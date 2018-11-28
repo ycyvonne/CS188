@@ -6,7 +6,21 @@ import colors from '../global/colors'
 import margins from '../global/margins'
 import Header from '../components/Header'
 
-class RecipePage extends Component {
+class RecipePage extends React.Component {
+  state = {
+    recipeInfo: null,
+  }
+
+  async componentDidMount() {
+    const res = await fetch(
+      `https://food-api-proxy.herokuapp.com/get-recipe-info?q=${
+        this.props.recipeID
+      }`
+    )
+    const data = await res.json()
+    this.setState({ recipeInfo: data })
+  }
+
   render() {
     return (
       <>
@@ -17,7 +31,9 @@ class RecipePage extends Component {
                 rgba(0, 0, 0, 0.5),
                 rgba(0, 0, 0, 0.5)
               ),
-              url('https://cdn0.vox-cdn.com/thumbor/IL4ThHk4KP1ft0P18EnXxngakdI=/0x0:1920x1080/1200x800/filters:focal(807x387:1113x693)/cdn0.vox-cdn.com/uploads/chorus_image/image/54014619/shrek.0.jpg');
+              url('${
+                !!this.state.recipeInfo ? this.state.recipeInfo.image : ''
+              }');
             background-size: cover;
             /* background-attachment: fixed; */
             /* background-position: center; */
@@ -27,6 +43,7 @@ class RecipePage extends Component {
           `}
         >
           <LeftArrow
+            to="/"
             color={colors.white}
             style={css`
               position: absolute;
@@ -43,17 +60,42 @@ class RecipePage extends Component {
               margin: 0;
             `}
           >
-            Fried Chicken
+            {!!this.state.recipeInfo && this.state.recipeInfo.title}
           </Header>
         </div>
-        <div>
-          {!!this.props.steps &&
-            this.props.steps.map((step, i) => (
-              <div>
-                <h3>{i}</h3>
-                <section>{step}</section>
-              </div>
-            ))}
+        <div
+          className={css`
+            padding: 1rem;
+          `}
+        >
+          {!!this.state.recipeInfo && (
+            <p
+              dangerouslySetInnerHTML={{
+                __html: this.state.recipeInfo.summary,
+              }}
+            />
+          )}
+          <div>
+            {!!this.state.recipeInfo &&
+              this.state.recipeInfo.instructions.map((section, i) => (
+                <section key={i}>
+                  <h3>{section.name}</h3>
+                  {section.steps.length > 0 &&
+                    section.steps.map(step => (
+                      <div key={step.number}>
+                        <div
+                          className={css`
+                            font-weight: bold;
+                          `}
+                        >
+                          {step.number}
+                        </div>
+                        <p>{step.step}</p>
+                      </div>
+                    ))}
+                </section>
+              ))}
+          </div>
         </div>
       </>
     )

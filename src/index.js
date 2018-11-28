@@ -38,6 +38,7 @@ const App = () => (
         height: 100%;
         > div {
           height: 100%;
+          overflow: scroll;
         }
       `}
     >
@@ -45,7 +46,6 @@ const App = () => (
         <IngredientsPage path="/" />
         <IngredientSearch path="ingredient-search" />
         <IngredientSearchResults path="ingredient-search/:ingredient" />
-        {/* <RecipeCustomize path="recipe-customize" /> */}
         <RecipeSearchResults path="recipe-search-results" />
         <RecipePage path="recipe/:recipeID" />
       </Router>
