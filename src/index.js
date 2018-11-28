@@ -12,7 +12,7 @@ import IngredientsPage from './pages/IngredientsPage/container'
 import IngredientSearch from './pages/IngredientSearch'
 import IngredientSearchResults from './pages/IngredientSearchResults/container'
 import RecipeCustomize from './pages/RecipeCustomize'
-import RecipeSearchResults from './pages/RecipeSearchResults'
+import RecipeSearchResults from './pages/RecipeSearchResults/container'
 import RecipePage from './pages/RecipePage'
 
 import ingredientsList from './reducers'
@@ -45,9 +45,9 @@ const App = () => (
         <IngredientsPage path="/" />
         <IngredientSearch path="ingredient-search" />
         <IngredientSearchResults path="ingredient-search/:ingredient" />
-        <RecipeCustomize path="recipe-customize" />
+        {/* <RecipeCustomize path="recipe-customize" /> */}
         <RecipeSearchResults path="recipe-search-results" />
-        <RecipePage path="recipe-page" />
+        <RecipePage path="recipe/:recipeID" />
       </Router>
     </div>
   </div>

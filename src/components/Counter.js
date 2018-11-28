@@ -34,9 +34,7 @@ const Counter = props => (
         text-align: center;
       `}
     >
-      <Button light={true} width="50px" height="50px">
-        -
-      </Button>
+      <Button light={true} type="minus" />
       <span
         className={css`
           font-size: 48px;
@@ -45,9 +43,7 @@ const Counter = props => (
       >
         1
       </span>
-      <Button light={true} width="50px" height="50px">
-        +
-      </Button>
+      <Button light={true} type="plus" />
     </div>
   </div>
 )

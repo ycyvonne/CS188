@@ -109,7 +109,7 @@ class IngredientsPage extends Component {
             justify-self: right;
           `}
           type="cook"
-          to="/"
+          to="/recipe-search-results"
         />
       </>
     )

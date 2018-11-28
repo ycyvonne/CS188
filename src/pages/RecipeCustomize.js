@@ -9,7 +9,7 @@ import FullWidthButton from '../components/FullWidthButton'
 class RecipeCustomize extends Component {
   render() {
     return (
-      <Page backButton={true} bottomBar={<FullWidthButton title="Search" />}>
+      <Page backButton={true}>
         <Header>Customize your recipe</Header>
         <Counter label="Servings" />
         <Counter label="Max. missing ingredients" />
