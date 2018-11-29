@@ -1,5 +1,5 @@
 import Rebase from 're-base'
-import * as firebase from 'firebase/app';
+import firebase from 'firebase';
 import * as database from 'firebase/database';
 
 const app = firebase.initializeApp({
@@ -14,5 +14,7 @@ const app = firebase.initializeApp({
 var db = firebase.database(app);
 var base = Rebase.createClass(db);
 
-export { app };
+var facebookProvider = new firebase.auth.FacebookAuthProvider();
+
+export { app, facebookProvider };
 export default base;
