@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
-import { css } from 'react-emotion'
 
 import Page from '../components/Page'
 import Input from '../components/Input'
 import Header from '../components/Header'
-import Divider from '../components/Divider'
 import FullWidthButton from '../components/FullWidthButton'
 
 class IngredientSearch extends Component {

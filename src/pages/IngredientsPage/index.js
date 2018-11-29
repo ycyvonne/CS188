@@ -5,7 +5,6 @@ import Header from '../../components/Header'
 import Card from '../../components/Card'
 import Page from '../../components/Page'
 import Button from '../../components/Button'
-import margins from '../../global/margins'
 
 class IngredientsPage extends Component {
   state = {
