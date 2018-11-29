@@ -4,11 +4,11 @@ import { removeIngredients } from '../../actions'
 import IngredientsPage from '.'
 
 const mapStateToProps = state => ({
-  ingredients: state,
+  // ingredients: state,
 })
 
 const mapDispatchToProps = dispatch => ({
-  removeIngredients: ingredients => dispatch(removeIngredients(ingredients)),
+  // removeIngredients: ingredients => dispatch(removeIngredients(ingredients)),
 })
 export default connect(
   mapStateToProps,
