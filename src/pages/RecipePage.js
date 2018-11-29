@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { css } from 'react-emotion'
 
 import LeftArrow from '../components/LeftArrow'
+import Tag from '../components/Tag'
 import colors from '../global/colors'
 import margins from '../global/margins'
 import Header from '../components/Header'
@@ -69,12 +70,25 @@ class RecipePage extends Component {
           `}
         >
           {!!this.state.recipeInfo && (
-            <p
-              dangerouslySetInnerHTML={{
-                __html: this.state.recipeInfo.summary,
-              }}
-            />
+            <Tag>Ready in {this.state.recipeInfo.prepTime} minutes</Tag>
           )}
+
+          {!!this.state.recipeInfo && (
+            <Tag>Makes {this.state.recipeInfo.servings} servings</Tag>
+          )}
+
+          {!!this.state.recipeInfo && this.state.recipeInfo.cheap && (
+            <Tag>Cheap</Tag>
+          )}
+
+          {!!this.state.recipeInfo && this.state.recipeInfo.vegan && (
+            <Tag>Vegan</Tag>
+          )}
+
+          {!!this.state.recipeInfo &&
+            !this.state.recipeInfo.vegan &&
+            this.state.recipeInfo.vegetarian && <Tag>Vegetarian</Tag>}
+
           <div>
             {!!this.state.recipeInfo &&
               this.state.recipeInfo.instructions.map((section, i) => (
