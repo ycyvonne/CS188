@@ -32,8 +32,7 @@ class App extends Component {
     super(props);
     this.props = props;
     this.state = {
-      ingredients: [],
-      synced: false
+      ingredients: []
     };
   }
 
