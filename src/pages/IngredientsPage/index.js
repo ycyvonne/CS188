@@ -6,6 +6,7 @@ import Header from '../../components/Header'
 import Card from '../../components/Card'
 import Page from '../../components/Page'
 import Button from '../../components/Button'
+import Modal from '../../components/Modal'
 
 class IngredientsPage extends Component {
   constructor(props) {
@@ -13,6 +14,7 @@ class IngredientsPage extends Component {
     this.props = props
     this.state = {
       selectMode: false,
+      show: false,
       selectedButtons: Array.apply(
         null,
         Array(this.props.ingredients.length)
@@ -47,9 +49,17 @@ class IngredientsPage extends Component {
     this.setState({ selectMode: false })
   }
 
-  handleClick = () => {
+  confirmLogout = () => {
     sessionStorage.removeItem('user')
     navigate('/')
+  }
+
+  showModal = () => {
+    this.setState({ show: true })
+  }
+
+  hideModal = () => {
+    this.setState({ show: false })
   }
 
   render() {
@@ -72,16 +82,26 @@ class IngredientsPage extends Component {
         </>
       )
     }
-    const logoutButton = (
-      <Button
+    const topBar = (
+      <div
         className={css`
-          justify-self: right;
+          display: grid;
+          grid-template-columns: 1fr;
+          width: 100%;
+          margin: 10px;
         `}
-        type="logout"
-        onClick={this.handleClick}
-      />
+      >
+        <Button
+          className={css`
+            justify-self: right;
+          `}
+          type="logout"
+          onClick={this.showModal}
+        />
+      </div>
     )
-    const buttons = this.state.selectMode ? (
+
+    const actionButtons = this.state.selectMode ? (
       <>
         <Button
           className={css`
@@ -121,18 +141,7 @@ class IngredientsPage extends Component {
     )
     return (
       <Page
-        topBar={
-          <div
-            className={css`
-              display: grid;
-              grid-template-columns: 1fr;
-              width: 100%;
-              margin: 10px;
-            `}
-          >
-            {logoutButton}
-          </div>
-        }
+        topBar={topBar}
         bottomBar={
           <div
             className={css`
@@ -141,10 +150,24 @@ class IngredientsPage extends Component {
               width: 100%;
             `}
           >
-            {buttons}
+            {actionButtons}
           </div>
         }
       >
+        <Modal
+          show={this.state.show}
+          handleConfirm={this.confirmLogout}
+          handleClose={this.hideModal}
+        >
+          <p
+            className={css`
+              justify-self: center;
+              font-weight: bold;
+            `}
+          >
+            Would you like to logout?
+          </p>
+        </Modal>
         {ingredientsView}
       </Page>
     )

@@ -19,6 +19,7 @@ types:
 "x"
 "select"
 "logout"
+"confirm"
 */
 
 class Button extends Component {
@@ -83,20 +84,20 @@ class Button extends Component {
               justify-content: center;
               font-size: 18px;
               color: ${colors.white};
-              padding: ${margins.medium};
             `}
           >
             <span
               className={css`
-                margin-left: ${margins.xtiny};
+                margin: 0 ${margins.xtiny};
               `}
             >
-              Recipes
+              Generate
             </span>
+            <img src={pan} />
           </div>
         )
         borderRadius = '32px'
-        width = '100px'
+        width = '100%'
         height = '70px'
         break
       case 'logout':
@@ -117,6 +118,31 @@ class Button extends Component {
               `}
             >
               Logout
+            </span>
+          </div>
+        )
+        borderRadius = '32px'
+        width = '100px'
+        height = '70px'
+        break
+      case 'confirm':
+        renderSymbol = (
+          <div
+            className={css`
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 18px;
+              color: ${colors.white};
+              padding: ${margins.medium};
+            `}
+          >
+            <span
+              className={css`
+                margin-left: ${margins.xtiny};
+              `}
+            >
+              Confirm
             </span>
           </div>
         )
