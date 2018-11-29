@@ -21,7 +21,7 @@ const Page = props => (
           width: 100%;
         `}
       >
-        <LeftArrow color={colors.black} to="../" />
+        <LeftArrow color={colors.black} to={props.to} />
       </div>
     )}
     {props.children}

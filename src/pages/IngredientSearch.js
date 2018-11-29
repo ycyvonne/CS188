@@ -18,7 +18,7 @@ class IngredientSearch extends Component {
 
   render() {
     return (
-      <Page backButton={true}>
+      <Page backButton={true} to="/user/ingredients">
         <Header>What ingredients do you have?</Header>
         <Input
           ref={this.inputRef}

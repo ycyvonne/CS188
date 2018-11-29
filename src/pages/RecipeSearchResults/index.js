@@ -32,12 +32,12 @@ class RecipeSearchResults extends Component {
   }
 
   selectResult = recipeID => {
-    navigate(`/recipe/${recipeID}`)
+    navigate(`/user/recipe/${recipeID}`)
   }
 
   render() {
     return (
-      <Page backButton={true}>
+      <Page backButton={true} to="/user/ingredients">
         <Header>Results based off your ingredients</Header>
         {!this.state.fetched && <Loading />}
         {this.state.fetched &&
