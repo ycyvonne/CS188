@@ -71,7 +71,7 @@ class RecipePage extends React.Component {
           {!!this.state.recipeInfo && (
             <p
               dangerouslySetInnerHTML={{
-                __html: this.state.recipeInfo.summary.split('<b>')[0],
+                __html: this.state.recipeInfo.summary,
               }}
             />
           )}
