@@ -8,9 +8,14 @@ import Card from '../../components/Card'
 import Loading from '../../components/Loading'
 
 class RecipeSearchResults extends Component {
-  state = {
-    fetched: false,
-    results: [],
+  
+  constructor(props) {
+    super(props);
+    this.props = props;
+    this.state = {
+      fetched: false,
+      results: [],
+    }
   }
 
   async componentDidMount() {
