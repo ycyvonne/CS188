@@ -93,14 +93,14 @@ class IngredientsPage extends Component {
           `}
           type="plus"
           light={true}
-          to="/ingredient-search"
+          to="/user/ingredient-search"
         />
         <Button
           className={css`
             justify-self: right;
           `}
           type="cook"
-          to="/recipe-search-results"
+          to="/user/recipe-search-results"
           disabled={this.props.ingredients.length === 0}
         />
       </>
