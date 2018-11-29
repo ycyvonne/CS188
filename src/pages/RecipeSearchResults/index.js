@@ -6,8 +6,11 @@ import Page from '../../components/Page'
 import Header from '../../components/Header'
 import Card from '../../components/Card'
 
+import Loading from '../../components/Loading'
+
 class RecipeSearchResults extends Component {
   state = {
+    fetched: false,
     results: [],
   }
 
@@ -18,7 +21,10 @@ class RecipeSearchResults extends Component {
         .join(',')}`
     )
     const data = await res.json()
-    this.setState({ results: data })
+    this.setState({
+      fetched: true,
+      results: data,
+    })
   }
 
   selectResult = recipeID => {
@@ -26,10 +32,12 @@ class RecipeSearchResults extends Component {
   }
 
   render() {
+    
     return (
       <Page backButton={true}>
         <Header>Results based off your ingredients</Header>
-        {this.state.results.map((result, i) => (
+        {!this.state.fetched && <Loading />}
+        {this.state.fetched && this.state.results.map((result, i) => (
           <Card
             text={result.title}
             image={result.image}

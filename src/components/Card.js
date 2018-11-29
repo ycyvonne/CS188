@@ -6,9 +6,6 @@ import colors from '../global/colors'
 import borderRadii from '../global/borderRadii'
 import fonts from '../global/fonts'
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCheck } from '@fortawesome/free-solid-svg-icons'
-
 class Card extends Component {
   state = {
     selectMode: false,
