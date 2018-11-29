@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import RecipeSearchResults from '.'
 
 const mapStateToProps = state => ({
-  ingredients: state,
+  // ingredients: state,
 })
 
 const mapDispatchToProps = dispatch => ({})

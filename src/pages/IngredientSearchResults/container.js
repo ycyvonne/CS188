@@ -6,7 +6,7 @@ import IngredientSearchResults from '.'
 const mapStateToProps = state => ({})
 
 const mapDispatchToProps = dispatch => ({
-  addIngredient: ingredient => dispatch(addIngredient(ingredient)),
+  // addIngredient: ingredient => dispatch(addIngredient(ingredient)),
 })
 
 export default connect(

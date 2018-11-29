@@ -8,12 +8,16 @@ import Button from '../../components/Button'
 import margins from '../../global/margins'
 
 class IngredientsPage extends Component {
-  state = {
-    selectMode: false,
-    selectedButtons: Array.apply(
-      null,
-      Array(this.props.ingredients.length)
-    ).map(() => false),
+  constructor(props) {
+    super(props);
+    this.props = props;
+    this.state = {
+      selectMode: false,
+      selectedButtons: Array.apply(
+        null,
+        Array(this.props.ingredients.length)
+      ).map(() => false),
+    }
   }
 
   toggleButtonSelect = i => {
