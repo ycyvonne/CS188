@@ -46,11 +46,6 @@ class Button extends Component {
       case 'trash':
         renderSymbol = <img src={trash} />
         break
-      case 'cook':
-        renderSymbol = <img src={pan} />
-        borderRadius = '32px'
-        width = '140px'
-        break
       case 'x':
         renderSymbol = <img src={x} />
         break
@@ -78,6 +73,31 @@ class Button extends Component {
         borderRadius = '32px'
         width = '100px'
         height = '40px'
+      case 'cook':
+        renderSymbol = (
+          <div
+            className={css`
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 18px;
+              color: ${colors.white};
+              padding: ${margins.medium};
+            `}
+          >
+            <span
+              className={css`
+                margin-left: ${margins.xtiny};
+              `}
+            >
+              Recipes
+            </span>
+          </div>
+        )
+        borderRadius = '32px'
+        width = '100px'
+        height = '70px'
+        break
       default:
         break
     }
