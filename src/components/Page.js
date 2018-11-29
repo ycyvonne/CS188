@@ -15,6 +15,7 @@ const Page = props => (
       padding: 24px 16px;
     `}
   >
+    {props.topBar}
     {props.backButton && (
       <div
         className={css`

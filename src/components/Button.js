@@ -18,6 +18,7 @@ types:
 "cook"
 "x"
 "select"
+"logout"
 */
 
 class Button extends Component {
@@ -91,6 +92,31 @@ class Button extends Component {
               `}
             >
               Recipes
+            </span>
+          </div>
+        )
+        borderRadius = '32px'
+        width = '100px'
+        height = '70px'
+        break
+      case 'logout':
+        renderSymbol = (
+          <div
+            className={css`
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 18px;
+              color: ${colors.white};
+              padding: ${margins.medium};
+            `}
+          >
+            <span
+              className={css`
+                margin-left: ${margins.xtiny};
+              `}
+            >
+              Logout
             </span>
           </div>
         )

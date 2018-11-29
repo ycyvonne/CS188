@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { css } from 'react-emotion'
+import { Redirect, navigate } from '@reach/router'
 
 import Header from '../../components/Header'
 import Card from '../../components/Card'
@@ -8,8 +9,8 @@ import Button from '../../components/Button'
 
 class IngredientsPage extends Component {
   constructor(props) {
-    super(props);
-    this.props = props;
+    super(props)
+    this.props = props
     this.state = {
       selectMode: false,
       selectedButtons: Array.apply(
@@ -46,6 +47,11 @@ class IngredientsPage extends Component {
     this.setState({ selectMode: false })
   }
 
+  handleClick = () => {
+    sessionStorage.removeItem('user')
+    navigate('/')
+  }
+
   render() {
     let ingredientsView
     if (this.props.ingredients.length === 0) {
@@ -66,7 +72,15 @@ class IngredientsPage extends Component {
         </>
       )
     }
-
+    const logoutButton = (
+      <Button
+        className={css`
+          justify-self: right;
+        `}
+        type="logout"
+        onClick={this.handleClick}
+      />
+    )
     const buttons = this.state.selectMode ? (
       <>
         <Button
@@ -105,9 +119,20 @@ class IngredientsPage extends Component {
         />
       </>
     )
-
     return (
       <Page
+        topBar={
+          <div
+            className={css`
+              display: grid;
+              grid-template-columns: 1fr;
+              width: 100%;
+              margin: 10px;
+            `}
+          >
+            {logoutButton}
+          </div>
+        }
         bottomBar={
           <div
             className={css`
