@@ -89,6 +89,15 @@ class RecipePage extends Component {
             !this.state.recipeInfo.vegan &&
             this.state.recipeInfo.vegetarian && <Tag>Vegetarian</Tag>}
 
+          {!!this.state.recipeInfo && (
+            <div>
+              <h3>You will need:</h3>
+              {this.state.recipeInfo.instructions[0].steps.map(step =>
+                step.ingredients.map(ing => <li>{ing.name}</li>)
+              )}
+            </div>
+          )}
+
           <div>
             {!!this.state.recipeInfo &&
               this.state.recipeInfo.instructions.map((section, i) => (
