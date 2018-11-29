@@ -37,7 +37,8 @@ class IngredientSearchResults extends Component {
       <Page backButton={true}>
         <Header>Results similar to “{this.props.ingredient}”</Header>
         {!this.state.fetched && <Loading />}
-        {this.state.fetched && this.state.results.map((result, i) => (
+        {this.state.fetched &&
+        this.state.results.map((result, i) => (
             <Card
               text={result.name}
               image={result.image}
@@ -45,7 +46,12 @@ class IngredientSearchResults extends Component {
               onClick={() => this.selectResult(result)}
             />
           ))}
-        {this.state.fetched && this.state.results.length == 0 && <Error title="No Ingredients Found" message="We've searched based on the ingredient name you've typed. Try re-searching or checking for typos."/>}
+        {this.state.fetched &&
+          this.state.results.length == 0 &&
+          <Error
+            title="No Ingredients Found"
+            message="We've searched based on the ingredient name you've typed. Try re-searching or checking for typos."
+          />}
       </Page>
     )
   }
