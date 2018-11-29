@@ -53,12 +53,14 @@ class App extends Component {
   }
 
   login = () => {
+    sessionStorage.setItem("loggingIn", true);
     firebase.auth().signInWithRedirect(facebookProvider);
   }
 
   logout = () => {
     firebase.auth().signOut().then(() => {
-      this.setState({ user: null }) 
+      this.setState({ user: null });
+      sessionStorage.removeItem('user');
     }).catch(error => {
       console.log('logout error:', error);
     });
@@ -71,25 +73,36 @@ class App extends Component {
       asArray: true,
     });
 
-    if (!this.state.user) {
-      firebase.auth().getRedirectResult().then(result => {
-        if (result.credential) {
-          var token = result.credential.accessToken;
-        }
-        var user = result.user;
-        this.setState({user: user});
-        console.log('user', user)
-        console.log('state', this.state)
-        if (user) {
-          navigate("/user/ingredients");
-        }
-      }).catch(error => {
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        var email = error.email;
-        var credential = error.credential;
-        console.log('error', errorMessage)
-      });
+    var loggingIn = sessionStorage.getItem("loggingIn");
+    
+    if (loggingIn || !this.state.user) {
+      var sessionUser = sessionStorage.getItem('user');
+      sessionStorage.removeItem("loggingIn");
+
+      if (!sessionUser) {
+        firebase.auth().getRedirectResult().then(result => {
+
+          // we don't use FB's api for anything else, but keeping this here in case
+          // if (result.credential) {
+          //   var token = result.credential.accessToken;
+          // }
+          var user = result.user;
+          if (user) {
+            this.setState({user: user.providerData[0]});
+            sessionStorage.setItem('user', this.state.user);
+            navigate("/user/ingredients");
+          }
+        }).catch(error => {
+          var errorMessage = error.message;
+          console.log('error in index.js getRedirectResult()', errorMessage)
+        });
+      }
+      else {
+        this.setState({user: sessionUser});
+        sessionStorage.removeItem("loggingIn");
+        navigate("/user/ingredients");
+      }
+      
     }
     else {
       navigate("/user/ingredients");

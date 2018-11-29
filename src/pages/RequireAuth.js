@@ -10,8 +10,8 @@ class RequireAuth extends Component {
   }
 
   render() {
-    console.log('this.props.user', this.props.user)
-    if (!this.props.user) {
+    var sessionUser = sessionStorage.getItem('user');
+    if (!this.props.user && !sessionUser) {
         return <Redirect to="/" noThrow/>
     } else {
         return (

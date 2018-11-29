@@ -1,10 +1,7 @@
 import React, { Component } from 'react'
-import { css } from 'react-emotion'
-
 import Page from '../components/Page'
-import Header from '../components/Header'
-
 import FacebookBtn from '../components/FacebookBtn'
+import Loading from '../components/Loading'
 
 class LoginPage extends Component {
 
@@ -14,9 +11,11 @@ class LoginPage extends Component {
   }
 
   render() {
+    var loggingIn = sessionStorage.getItem("loggingIn")
     return (
       <Page backButton={false}>
-        <FacebookBtn onClick={this.props.login}/>
+        {loggingIn && <Loading />}
+        {!loggingIn && <FacebookBtn onClick={this.props.login}/>}
       </Page>
     )
   }
