@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { css } from 'react-emotion'
 import { navigate } from '@reach/router'
 
 import Page from '../../components/Page'
@@ -32,19 +31,19 @@ class RecipeSearchResults extends Component {
   }
 
   render() {
-    
     return (
       <Page backButton={true}>
         <Header>Results based off your ingredients</Header>
         {!this.state.fetched && <Loading />}
-        {this.state.fetched && this.state.results.map((result, i) => (
-          <Card
-            text={result.title}
-            image={result.image}
-            key={i}
-            onClick={() => this.selectResult(result.id)}
-          />
-        ))}
+        {this.state.fetched &&
+          this.state.results.map((result, i) => (
+            <Card
+              text={result.title}
+              image={result.image}
+              key={i}
+              onClick={() => this.selectResult(result.id)}
+            />
+          ))}
       </Page>
     )
   }

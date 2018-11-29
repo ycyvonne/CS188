@@ -6,7 +6,7 @@ import colors from '../global/colors'
 import margins from '../global/margins'
 import Header from '../components/Header'
 
-class RecipePage extends React.Component {
+class RecipePage extends Component {
   state = {
     recipeInfo: null,
   }
