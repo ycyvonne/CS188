@@ -1,6 +1,5 @@
 import Rebase from 're-base'
 import * as firebase from 'firebase/app';
-// import 'firebase/firestore';
 import * as database from 'firebase/database';
 
 const app = firebase.initializeApp({
@@ -11,10 +10,6 @@ const app = firebase.initializeApp({
     storageBucket: "recipesearch-46fe6.appspot.com",
     messagingSenderId: "146513880979"
 });
-
-// const db = firebase.firestore(app);
-// const settings = {timestampsInSnapshots: true};
-// db.settings(settings);
 
 var db = firebase.database(app);
 var base = Rebase.createClass(db);

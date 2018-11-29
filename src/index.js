@@ -15,7 +15,6 @@ import RecipeCustomize from './pages/RecipeCustomize'
 import RecipeSearchResults from './pages/RecipeSearchResults/container'
 import RecipePage from './pages/RecipePage'
 
-import Rebase from 're-base'
 import base from './base'
 
 import ingredientsList from './reducers'
@@ -36,7 +35,7 @@ class App extends Component {
     };
   }
 
-  addIngredient = (ingredient = {image: '', name: ''}) => {
+  addIngredient = (ingredient) => {
     this.setState({
       ingredients: this.state.ingredients.concat([ingredient])
     });
