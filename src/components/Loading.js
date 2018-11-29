@@ -1,5 +1,5 @@
 import React from 'react'
-import loadingGif from '../assets/icons/loading.gif';
+import loadingGif from '../assets/images/loading.gif';
 import { css } from 'react-emotion'
 
 const Loading = props => (

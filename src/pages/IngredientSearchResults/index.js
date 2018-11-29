@@ -6,6 +6,7 @@ import Page from '../../components/Page'
 import Header from '../../components/Header'
 import Card from '../../components/Card'
 import Loading from '../../components/Loading'
+import Error from '../../components/Error'
 
 class IngredientSearchResults extends Component {
   state = {
@@ -44,6 +45,7 @@ class IngredientSearchResults extends Component {
               onClick={() => this.selectResult(result)}
             />
           ))}
+        {this.state.fetched && this.state.results.length == 0 && <Error title="No Ingredients Found" message="We've searched based on the ingredient name you've typed. Try re-searching or checking for typos."/>}
       </Page>
     )
   }
