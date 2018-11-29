@@ -66,19 +66,25 @@ class App extends Component {
     });
   }
 
-  componentDidMount() {
-    this.ref = base.syncState('ingredients', {
-      context: this,
-      state: 'ingredients',
-      asArray: true,
-    });
+  syncFirebase = () => {
+    if (this.state.user) {
+      this.ref = base.syncState(`users/${this.state.user.uid}`, {
+        context: this,
+        state: 'ingredients',
+        asArray: true
+      });
+    }
+    else {
+      console.log('user was undefined', this.state.user)
+    }
+  }
 
+  componentDidMount() {
     var loggingIn = sessionStorage.getItem("loggingIn");
     
     if (loggingIn || !this.state.user) {
       var sessionUser = sessionStorage.getItem('user');
       sessionStorage.removeItem("loggingIn");
-
       if (!sessionUser) {
         firebase.auth().getRedirectResult().then(result => {
 
@@ -86,11 +92,15 @@ class App extends Component {
           // if (result.credential) {
           //   var token = result.credential.accessToken;
           // }
+
           var user = result.user;
           if (user) {
-            this.setState({user: user.providerData[0]});
-            sessionStorage.setItem('user', this.state.user);
-            navigate("/user/ingredients");
+            this.setState({user: user.providerData[0]}, () => {
+              sessionStorage.setItem('user', JSON.stringify(this.state.user));
+              this.syncFirebase();
+              navigate("/user/ingredients");
+            });
+            
           }
         }).catch(error => {
           var errorMessage = error.message;
@@ -98,13 +108,17 @@ class App extends Component {
         });
       }
       else {
-        this.setState({user: sessionUser});
-        sessionStorage.removeItem("loggingIn");
-        navigate("/user/ingredients");
+        this.setState({user: JSON.parse(sessionUser)}, () => {
+          sessionStorage.removeItem("loggingIn");
+          this.syncFirebase();
+          navigate("/user/ingredients");
+        });
+        
       }
       
     }
     else {
+      this.syncFirebase();
       navigate("/user/ingredients");
     }
   }
