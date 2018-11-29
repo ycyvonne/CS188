@@ -68,6 +68,7 @@ class Card extends Component {
             text-overflow: ellipsis;
             overflow: hidden;
             white-space: nowrap;
+            max-width: 288px;
           `}
         >
           {this.props.text}
