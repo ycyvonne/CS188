@@ -21,7 +21,7 @@ class IngredientSearch extends Component {
   render() {
     return (
       <Page backButton={true}>
-        <Header>What ingredient are you looking for?</Header>
+        <Header>What ingredients do you have?</Header>
         <Input
           ref={this.inputRef}
           autoFocus={true}

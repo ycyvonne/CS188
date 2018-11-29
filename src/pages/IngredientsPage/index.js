@@ -17,7 +17,13 @@ class IngredientsPage extends Component {
   }
 
   toggleButtonSelect = i => {
-    const { selectedButtons } = this.state
+    let selectedButtons = {}
+    if (!this.state.selectMode) {
+      this.setState({ selectMode: true })
+      selectedButtons = Array.apply(null, Array(this.props.ingredients.length))
+    } else {
+      selectedButtons = this.state.selectedButtons
+    }
     selectedButtons[i] = !selectedButtons[i]
     this.setState({ selectedButtons })
   }
@@ -44,24 +50,6 @@ class IngredientsPage extends Component {
     } else {
       ingredientsView = (
         <>
-          <div
-            className={css`
-              width: 100%;
-              display: flex;
-              flex-direction: row-reverse;
-              height: 40px;
-              margin-bottom: ${margins.xsmall};
-            `}
-          >
-            {!this.state.selectMode && (
-              <Button
-                light={true}
-                type="select"
-                onClick={() => this.setState({ selectMode: true })}
-              />
-            )}
-          </div>
-
           {this.props.ingredients.map((ingredient, i) => (
             <Card
               key={i}
