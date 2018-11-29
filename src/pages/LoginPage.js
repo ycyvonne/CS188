@@ -16,7 +16,6 @@ class LoginPage extends Component {
   render() {
     return (
       <Page backButton={false}>
-        <Header>Login to XX app</Header>
         <FacebookBtn onClick={this.props.login}/>
       </Page>
     )

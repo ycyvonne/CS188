@@ -28,12 +28,12 @@ class IngredientSearchResults extends Component {
 
   selectResult = ingredient => {
     this.props.addIngredient(ingredient)
-    navigate('/')
+    navigate('/user/ingredients')
   }
 
   render() {
     return (
-      <Page backButton={true}>
+      <Page backButton={true} to="/user/ingredient-search">
         <Header>Results similar to “{this.props.ingredient}”</Header>
         {!this.state.fetched && <Loading />}
         {this.state.fetched &&

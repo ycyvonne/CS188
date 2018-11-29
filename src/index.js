@@ -8,6 +8,7 @@ import { css } from 'react-emotion'
 import 'normalize.css'
 import './global/globalStyles'
 
+import RequireAuth from './pages/RequireAuth'
 import LoginPage from './pages/LoginPage';
 import IngredientsPage from './pages/IngredientsPage/container'
 import IngredientSearch from './pages/IngredientSearch'
@@ -80,7 +81,7 @@ class App extends Component {
         console.log('user', user)
         console.log('state', this.state)
         if (user) {
-          navigate("/ingredients");
+          navigate("/user/ingredients");
         }
       }).catch(error => {
         var errorCode = error.code;
@@ -91,7 +92,7 @@ class App extends Component {
       });
     }
     else {
-      navigate("/ingredients");
+      navigate("/user/ingredients");
     }
   }
 
@@ -121,18 +122,22 @@ class App extends Component {
               path="/"
               login={this.login}
               default/>
-            <IngredientsPage path="/ingredients"
-              ingredients={this.state.ingredients}
-              removeIngredients={this.removeIngredients}
-            />
-            <IngredientSearch path="ingredient-search" />
-            <IngredientSearchResults path="ingredient-search/:ingredient"
-              addIngredient={this.addIngredient}
-            />
-            <RecipeSearchResults path="recipe-search-results"
-              ingredients={this.state.ingredients}
-            />
-            <RecipePage path="recipe/:recipeID" />
+            <RequireAuth path="user"
+              user={this.state.user}
+            >
+              <IngredientsPage path="ingredients"
+                ingredients={this.state.ingredients}
+                removeIngredients={this.removeIngredients}
+              />
+              <IngredientSearch path="ingredient-search" />
+              <IngredientSearchResults path="ingredient-search/:ingredient"
+                addIngredient={this.addIngredient}
+              />
+              <RecipeSearchResults path="recipe-search-results"
+                ingredients={this.state.ingredients}
+              />
+              <RecipePage path="recipe/:recipeID" />
+            </RequireAuth>
           </Router>
         </div>
       </div>

@@ -43,7 +43,7 @@ class RecipePage extends Component {
           `}
         >
           <LeftArrow
-            to="/"
+            to="/user/ingredients"
             color={colors.white}
             style={css`
               position: absolute;
