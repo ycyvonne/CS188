@@ -160,6 +160,7 @@ class App extends Component {
               <IngredientsPage path="ingredients"
                 ingredients={this.state.ingredients}
                 removeIngredients={this.removeIngredients}
+                user={this.state.user}
                 synced={this.state.synced}
               />
               <IngredientSearch path="ingredient-search" />

@@ -50,7 +50,13 @@ class IngredientsPage extends Component {
   render() {
     var ingredientsView;
     if (this.props.ingredients.length === 0) {
-      ingredientsView = <Header>You have no ingredients.</Header>
+      var startingMessage = '';
+      if (this.props.user) {
+        var userFirstName = this.props.user.displayName.split(' ')[0];
+        startingMessage = `Hi ${userFirstName}! `
+      }
+      
+      ingredientsView = <Header>{startingMessage}Get started by adding what ingredients you have.</Header>
     }
     else {
       ingredientsView = (
