@@ -8,6 +8,8 @@ import borderRadii from '../global/borderRadii'
 import Card from './Card';
 import x from '../assets/icons/x2.svg'
 
+import * as _ from 'lodash';
+
 class Autocomplete extends Component {
   static propTypes = {
     suggestions: PropTypes.instanceOf(Array)
@@ -59,25 +61,13 @@ class Autocomplete extends Component {
   };
 
   onClick = (e, index) => {
-    var currentSuggestion = this.state.filteredSuggestions[index];    
-
-    var toggle = currentSuggestion.toggle;
-    var newFilteredSuggestions = this.state.filteredSuggestions;
-    if (toggle == null) {
-      newFilteredSuggestions[index] = Object.assign({}, currentSuggestion, {toggle: true});
+    var currentSuggestion = this.state.filteredSuggestions[index];
+    if (!_.some(this.props.selections, currentSuggestion)) {
       this.props.addIngredient(currentSuggestion);
     }
     else {
-      var newToggleValue = !toggle;
-      newFilteredSuggestions[index] = Object.assign({}, currentSuggestion, {toggle: newToggleValue});
-      if (newToggleValue) {
-        this.props.addIngredient(currentSuggestion);
-      }
-      else {
-        this.props.removeIngredient(currentSuggestion);
-      }
+      this.props.removeIngredient(currentSuggestion);
     }
-    this.setState({filteredSuggestions: newFilteredSuggestions});
   };
 
   render() {
@@ -118,7 +108,7 @@ class Autocomplete extends Component {
                   image={suggestion.image}
                   key={index}
                   onClick={(e) => onClick(e, index)}
-                  toggledCheck={this.state.filteredSuggestions[index].toggle}
+                  toggledCheck={_.some(this.props.selections, this.state.filteredSuggestions[index])}
                 />
               );
             })}
