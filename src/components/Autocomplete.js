@@ -155,6 +155,7 @@ class Autocomplete extends Component {
         <div className={css`
           position: relative;
           width: 100%;
+          padding-left: 50px;
         `}>
           <input
             className={css`
@@ -162,6 +163,7 @@ class Autocomplete extends Component {
               border-radius: ${borderRadii.small};
               border: none;
               width: 100%;
+              height: 48px;
               padding: 16px 10px;
               margin-bottom: 8px;
               font-size: 14px;
@@ -184,17 +186,18 @@ class Autocomplete extends Component {
             placeholder={this.props.placeholder}
             
           />
-          <img 
+          {this.state.userInput != '' && <img 
             src={x}
             alt="clear search input"
             onClick={() => {this.setState({userInput: ''})}}
             className={css`
             position: absolute;
-            top: 16px;
-            right: 10px;
-            height: 14px;
+            top: 0px;
+            right: 0px;
+            height: 48px;
+            padding: 18px;
             cursor: pointer;
-          `}/>
+          `}/>}
         </div>
         {suggestionsListComponent}
       </Fragment>

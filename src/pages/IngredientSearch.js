@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { navigate } from '@reach/router'
+import { css } from 'react-emotion'
 
 import Page from '../components/Page'
 import Header from '../components/Header'
@@ -26,8 +27,13 @@ class IngredientSearch extends Component {
 
   render() {
     return (
-      <Page backButton={true} to="/user/ingredients">
-        <Header>What ingredients do you have?</Header>
+      <Page backButton={true} to="/user/ingredients" backStyles={css`
+        position: absolute;
+        z-index: 100;
+        left: 16px;
+        top: 24px;
+        width: auto;
+      `}>
         <Autocomplete
           maxSuggestions={10}
           autoFocus={true}
