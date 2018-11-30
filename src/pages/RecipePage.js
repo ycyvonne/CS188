@@ -94,9 +94,11 @@ class RecipePage extends Component {
             <div>
               <h3>You will need:</h3>
               {_.uniq(
-                this.state.recipeInfo.instructions[0].steps.map(
-                  step => step.ingredients
-                )
+                _.flattenDeep(
+                  this.state.recipeInfo.instructions[0].steps.map(
+                    step => step.ingredients
+                  )
+                ).map(ing => ing.name)
               ).map(ing => (
                 <li>{ing.name}</li>
               ))}
