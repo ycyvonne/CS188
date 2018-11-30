@@ -2,12 +2,12 @@ import React, { Component } from 'react'
 import { css } from 'react-emotion'
 import { Redirect, navigate } from '@reach/router'
 
-import Header from '../../components/Header'
-import Card from '../../components/Card'
-import Page from '../../components/Page'
-import Button from '../../components/Button'
-import Loading from '../../components/Loading'
-import Modal from '../../components/Modal'
+import Header from '../components/Header'
+import Card from '../components/Card'
+import Page from '../components/Page'
+import Button from '../components/Button'
+import Loading from '../components/Loading'
+import Modal from '../components/Modal'
 
 class IngredientsPage extends Component {
   constructor(props) {

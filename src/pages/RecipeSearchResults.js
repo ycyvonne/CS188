@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { navigate } from '@reach/router'
 
-import Page from '../../components/Page'
-import Header from '../../components/Header'
-import Card from '../../components/Card'
+import Page from '../components/Page'
+import Header from '../components/Header'
+import Card from '../components/Card'
 
-import Loading from '../../components/Loading'
+import Loading from '../components/Loading'
 
 class RecipeSearchResults extends Component {
   constructor(props) {
