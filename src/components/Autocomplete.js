@@ -4,6 +4,7 @@ import { css } from 'react-emotion'
 
 import colors from '../global/colors'
 import borderRadii from '../global/borderRadii'
+import x from '../assets/icons/x2.svg'
 
 class Autocomplete extends Component {
   static propTypes = {
@@ -41,9 +42,8 @@ class Autocomplete extends Component {
   onChange = e => {    
     const userInput = e.currentTarget.value;
 
-    this.setState({
-      userInput: userInput
-    });
+    this.setState({ userInput: userInput });
+
     this.getResults(userInput).then(ingredients => {
       var filteredSuggestions = ingredients.map(a => a.name);
       this.setState({
@@ -152,34 +152,50 @@ class Autocomplete extends Component {
 
     return (
       <Fragment>
-        <input
-          className={css`
-            background: ${colors.lightGray};
-            border-radius: ${borderRadii.small};
-            border: none;
-            width: 100%;
-            padding: 16px 10px;
-            margin-bottom: 8px;
-            font-size: 14px;
-            color: black;
-            font-weight: bold;
-            :focus {
-                outline: none;
-            }
-            :placeholder-shown {
-                color: rgba(0, 0, 0, 0.4);
-                font-weight: normal;
-            }
-          `}
-          type="text"
-          onChange={onChange}
-          onKeyDown={onKeyDown}
-          value={userInput}
+        <div className={css`
+          position: relative;
+          width: 100%;
+        `}>
+          <input
+            className={css`
+              background: ${colors.lightGray};
+              border-radius: ${borderRadii.small};
+              border: none;
+              width: 100%;
+              padding: 16px 10px;
+              margin-bottom: 8px;
+              font-size: 14px;
+              color: black;
+              font-weight: bold;
+              :focus {
+                  outline: none;
+              }
+              :placeholder-shown {
+                  color: rgba(0, 0, 0, 0.4);
+                  font-weight: normal;
+              }
+            `}
+            type="text"
+            onChange={onChange}
+            onKeyDown={onKeyDown}
+            value={userInput}
 
-          autoFocus={this.props.autoFocus}
-          placeholder={this.props.placeholder}
-          
-        />
+            autoFocus={this.props.autoFocus}
+            placeholder={this.props.placeholder}
+            
+          />
+          <img 
+            src={x}
+            alt="clear search input"
+            onClick={() => {this.setState({userInput: ''})}}
+            className={css`
+            position: absolute;
+            top: 16px;
+            right: 10px;
+            height: 14px;
+            cursor: pointer;
+          `}/>
+        </div>
         {suggestionsListComponent}
       </Fragment>
     );
