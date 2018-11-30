@@ -4,6 +4,8 @@ import { css } from 'react-emotion'
 
 import colors from '../global/colors'
 import borderRadii from '../global/borderRadii'
+
+import Card from './Card';
 import x from '../assets/icons/x2.svg'
 
 class Autocomplete extends Component {
@@ -45,7 +47,7 @@ class Autocomplete extends Component {
     this.setState({ userInput: userInput });
 
     this.getResults(userInput).then(ingredients => {
-      var filteredSuggestions = ingredients.map(a => a.name);
+      var filteredSuggestions = ingredients;
       this.setState({
         activeSuggestion: 0,
         filteredSuggestions,
@@ -110,9 +112,7 @@ class Autocomplete extends Component {
             margin-top: 0;
             width: 100%;
             padding: 8px 0;
-            background: grey;
             border-radius: ${borderRadii.small};
-            background: #f5f5f5;
           `}>
             {filteredSuggestions.slice(0, this.props.maxSuggestions).map((suggestion, index) => {
               let className = ' ';
@@ -123,21 +123,12 @@ class Autocomplete extends Component {
               }
 
               return (
-                <li
-                    className={css`
-                        padding: 5px 8px;
-                        font-size: 16px;
-                        font-weight: bold;
-                        text-transform: lowercase;
-                        &:hover {
-                            cursor: pointer;
-                            background: rgba(0,0,0,0.1);
-                        }
-                    ` + className}
-                    key={suggestion} 
-                    onClick={onClick}>
-                  {suggestion}
-                </li>
+                <Card
+                  text={suggestion.name}
+                  image={suggestion.image}
+                  key={index}
+                  onClick={onClick}
+                />
               );
             })}
           </ul>
