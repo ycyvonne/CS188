@@ -69,12 +69,12 @@ class IngredientsPage extends Component {
 
     const buttons = this.state.selectMode ? (
       <>
-        <Button
+       <Button
           className={css`
             justify-self: left;
           `}
           light={true}
-          type="x"
+          type="<"
           onClick={() => this.setState({ selectMode: false })}
         />
         <Button
