@@ -5,6 +5,7 @@ import Header from '../../components/Header'
 import Card from '../../components/Card'
 import Page from '../../components/Page'
 import Button from '../../components/Button'
+import Loading from '../../components/Loading'
 
 class IngredientsPage extends Component {
   constructor(props) {
@@ -47,10 +48,11 @@ class IngredientsPage extends Component {
   }
 
   render() {
-    let ingredientsView
+    var ingredientsView;
     if (this.props.ingredients.length === 0) {
       ingredientsView = <Header>You have no ingredients.</Header>
-    } else {
+    }
+    else {
       ingredientsView = (
         <>
           {this.props.ingredients.map((ingredient, i) => (
@@ -121,13 +123,19 @@ class IngredientsPage extends Component {
           </div>
         }
       >
-        <div className={css`
-          width: inherit;
-          height: 100%;
-          padding: 0 16px 24px 16px;
-        `}>
-        {ingredientsView}
-        </div>
+        {
+          !this.props.synced && <Loading />
+        }
+        {
+          this.props.synced && 
+          <div className={css`
+            width: inherit;
+            height: 100%;
+            padding: 0 16px 24px 16px;
+          `}>
+          {ingredientsView}
+          </div>
+        }
       </Page>
     )
   }
