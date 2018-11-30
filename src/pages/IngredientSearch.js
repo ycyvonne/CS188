@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { navigate } from '@reach/router'
 
 import Page from '../components/Page'
 import Input from '../components/Input'
@@ -16,6 +17,13 @@ class IngredientSearch extends Component {
     this.setState({ searchText: event.target.value })
   }
 
+  handleInputKeyUp = event => {
+    // enter key pressed
+    if (event.keyCode == 13) {
+      navigate(`/user/ingredient-search/${this.state.searchText}`)
+    }
+  }
+
   render() {
     return (
       <Page backButton={true} to="/user/ingredients">
@@ -26,6 +34,7 @@ class IngredientSearch extends Component {
           placeholder="Ex. Vegetables, Chicken, Dairy, etc."
           value={this.state.searchText}
           onChange={this.inputTextChange}
+          onKeyUp={this.handleInputKeyUp}
         />
         <FullWidthButton label="Search" to={this.state.searchText} />
       </Page>

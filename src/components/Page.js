@@ -4,15 +4,18 @@ import { css } from 'react-emotion'
 import LeftArrow from './LeftArrow'
 import colors from '../global/colors'
 
+import margins from '../global/margins'
+
 const Page = props => (
   <div
     className={css`
+      position: relative;
       display: flex;
       flex-direction: column;
       align-items: center;
       height: 100%;
-      width: 100%;
-      padding: 24px 16px;
+      width: inherit;
+      padding: ${margins.small};
     `}
   >
     {props.topBar}
@@ -30,10 +33,12 @@ const Page = props => (
       <div
         className={css`
           flex: 1;
-          width: 100%;
+          position: fixed;
           display: flex;
+          width: inherit;
           flex-direction: column;
           justify-content: flex-end;
+          bottom: 10px;
         `}
       >
         {props.bottomBar}

@@ -9,7 +9,6 @@ import 'normalize.css'
 import './global/globalStyles'
 
 import RequireAuth from './pages/RequireAuth'
-// import Logout from './pages/Logout'
 import LoginPage from './pages/LoginPage'
 import IngredientsPage from './pages/IngredientsPage/container'
 import IngredientSearch from './pages/IngredientSearch'
@@ -36,6 +35,7 @@ class App extends Component {
     this.state = {
       user: null,
       ingredients: [],
+      synced: false,
     }
   }
 
@@ -78,6 +78,9 @@ class App extends Component {
         context: this,
         state: 'ingredients',
         asArray: true,
+        then: () => {
+          this.setState({ synced: true })
+        },
       })
     } else {
       console.log('user was undefined', this.state.user)
@@ -143,6 +146,7 @@ class App extends Component {
             height: 100%;
             > div {
               height: 100%;
+              width: inherit;
               overflow: scroll;
             }
           `}
@@ -154,6 +158,8 @@ class App extends Component {
                 path="ingredients"
                 ingredients={this.state.ingredients}
                 removeIngredients={this.removeIngredients}
+                user={this.state.user}
+                synced={this.state.synced}
               />
               <IngredientSearch path="ingredient-search" />
               <IngredientSearchResults

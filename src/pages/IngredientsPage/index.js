@@ -6,6 +6,7 @@ import Header from '../../components/Header'
 import Card from '../../components/Card'
 import Page from '../../components/Page'
 import Button from '../../components/Button'
+import Loading from '../../components/Loading'
 import Modal from '../../components/Modal'
 
 class IngredientsPage extends Component {
@@ -63,9 +64,19 @@ class IngredientsPage extends Component {
   }
 
   render() {
-    let ingredientsView
+    var ingredientsView
     if (this.props.ingredients.length === 0) {
-      ingredientsView = <Header>You have no ingredients.</Header>
+      var startingMessage = ''
+      if (this.props.user) {
+        var userFirstName = this.props.user.displayName.split(' ')[0]
+        startingMessage = `Hi ${userFirstName}! `
+      }
+
+      ingredientsView = (
+        <Header>
+          {startingMessage}Get started by adding what ingredients you have.
+        </Header>
+      )
     } else {
       ingredientsView = (
         <>
@@ -108,7 +119,7 @@ class IngredientsPage extends Component {
             justify-self: left;
           `}
           light={true}
-          type="x"
+          type="<"
           onClick={() => this.setState({ selectMode: false })}
         />
         <Button
@@ -147,7 +158,8 @@ class IngredientsPage extends Component {
             className={css`
               display: grid;
               grid-template-columns: 1fr 1fr;
-              width: 100%;
+              width: inherit;
+              padding: 10px 20px;
             `}
           >
             {actionButtons}
@@ -168,7 +180,18 @@ class IngredientsPage extends Component {
             Would you like to logout?
           </p>
         </Modal>
-        {ingredientsView}
+        {!this.props.synced && <Loading />}
+        {this.props.synced && (
+          <div
+            className={css`
+              width: inherit;
+              height: 100%;
+              padding: 0 16px 24px 16px;
+            `}
+          >
+            {ingredientsView}
+          </div>
+        )}
       </Page>
     )
   }
