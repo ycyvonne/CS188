@@ -11,6 +11,10 @@ class Logo extends Component {
         fill="white"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 301 106.94"
+        className={css`
+          width: 180px;
+          margin-bottom: 200px;
+        `}
       >
         <defs />
         <title>logo</title>
