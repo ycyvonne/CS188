@@ -82,7 +82,7 @@ class Card extends Component {
           className={css`
             position: relative;
             padding: 16px;
-            font-size: 14px;
+            font-size: 18px;
             font-family: ${fonts.header};
             font-weight: bold;
             display: flex;

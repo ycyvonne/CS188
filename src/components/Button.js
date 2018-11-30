@@ -98,6 +98,7 @@ class Button extends Component {
               color: ${colors.white};
             `}
           >
+            <img src={pan} />
             <span
               className={css`
                 margin: 0 ${margins.xtiny};
@@ -105,12 +106,11 @@ class Button extends Component {
             >
               Generate
             </span>
-            <img src={pan} />
           </div>
         )
         borderRadius = '32px'
         width = '100%'
-        height = '70px'
+        height = '64px'
         break
       case 'text':
         renderSymbol = (

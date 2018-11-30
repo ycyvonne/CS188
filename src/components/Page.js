@@ -9,6 +9,7 @@ import margins from '../global/margins'
 const Page = props => (
   <div
     className={css`
+      background-color: ${colors.offwhite};
       position: relative;
       display: flex;
       flex-direction: column;
@@ -35,7 +36,6 @@ const Page = props => (
       <div
         className={css`
           flex: 1;
-          position: fixed;
           display: flex;
           width: inherit;
           flex-direction: column;

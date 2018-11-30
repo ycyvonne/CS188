@@ -68,6 +68,7 @@ class RecipePage extends Component {
         <div
           className={css`
             padding: 1rem;
+            background-color: ${colors.offwhite};
           `}
         >
           {!!this.state.recipeInfo && (
@@ -120,7 +121,13 @@ class RecipePage extends Component {
                         >
                           {step.number}
                         </div>
-                        <p>{step.step}</p>
+                        <p
+                          className={css`
+                            margin-top: 0;
+                          `}
+                        >
+                          {step.step}
+                        </p>
                       </div>
                     ))}
                 </section>
