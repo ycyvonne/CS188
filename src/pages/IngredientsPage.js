@@ -191,7 +191,11 @@ class IngredientsPage extends Component {
               padding: 0 16px 24px 16px;
             `}
           >
-            {ingredientsView}
+            <div className={css`
+              height: max-content;
+              width: 100%;
+              padding-bottom: 180px;
+            `}>{ingredientsView}</div>
           </div>
         )}
       </Page>
