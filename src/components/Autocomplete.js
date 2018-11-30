@@ -59,20 +59,25 @@ class Autocomplete extends Component {
   };
 
   onClick = (e, index) => {
-    var currentSuggestion = this.state.filteredSuggestions[index];
-    this.props.addIngredient(currentSuggestion);
+    var currentSuggestion = this.state.filteredSuggestions[index];    
 
     var toggle = currentSuggestion.toggle;
     var newFilteredSuggestions = this.state.filteredSuggestions;
     if (toggle == null) {
       newFilteredSuggestions[index] = Object.assign({}, currentSuggestion, {toggle: true});
+      this.props.addIngredient(currentSuggestion);
     }
     else {
-      newFilteredSuggestions[index] = Object.assign({}, currentSuggestion, {toggle: !toggle});
+      var newToggleValue = !toggle;
+      newFilteredSuggestions[index] = Object.assign({}, currentSuggestion, {toggle: newToggleValue});
+      if (newToggleValue) {
+        this.props.addIngredient(currentSuggestion);
+      }
+      else {
+        this.props.removeIngredient(currentSuggestion);
+      }
     }
-    this.setState({filteredSuggestions: newFilteredSuggestions}, () => {
-      console.log('state', this.state)
-    })
+    this.setState({filteredSuggestions: newFilteredSuggestions});
   };
 
   render() {

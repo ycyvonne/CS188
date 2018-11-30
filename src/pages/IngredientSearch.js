@@ -6,6 +6,7 @@ import Page from '../components/Page'
 import Header from '../components/Header'
 import FullWidthButton from '../components/FullWidthButton'
 import Autocomplete from '../components/Autocomplete'
+import TempSelectionBox from '../components/TempSelectionBox'
 
 import * as _ from 'lodash';
 
@@ -30,7 +31,7 @@ class IngredientSearch extends Component {
 
   addIngredient = newIngredient => {
     this.setState({
-      selectedIngredients: this.state.selectedIngredients.concat([newIngredient])
+      selectedIngredients: [newIngredient].concat(this.state.selectedIngredients)
     });
   }
 
@@ -58,8 +59,11 @@ class IngredientSearch extends Component {
           onChange={this.inputTextChange}
           onEnter={this.onEnter}
           addIngredient={this.addIngredient}
+          removeIngredient={this.removeIngredient}
         />
-        <FullWidthButton label="Search" to={this.state.searchText} />
+        <TempSelectionBox 
+          selections={this.state.selectedIngredients}/>
+        {/* <FullWidthButton label="Search" to={this.state.searchText} /> */}
       </Page>
     )
   }
