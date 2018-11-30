@@ -7,6 +7,8 @@ import Header from '../components/Header'
 import FullWidthButton from '../components/FullWidthButton'
 import Autocomplete from '../components/Autocomplete'
 
+import * as _ from 'lodash';
+
 class IngredientSearch extends Component {
 
   constructor(props) {
@@ -14,6 +16,7 @@ class IngredientSearch extends Component {
     this.props = props;
     this.state = {
       searchText: '',
+      selectedIngredients: []
     }
   }
 
@@ -23,6 +26,19 @@ class IngredientSearch extends Component {
 
   onEnter(text) {
     navigate(`/user/ingredient-search/${text}`);
+  }
+
+  addIngredient = newIngredient => {
+    this.setState({
+      selectedIngredients: this.state.selectedIngredients.concat([newIngredient])
+    });
+  }
+
+  removeIngredient = ingredientToRemove => {
+    var ingredientList = this.state.selectedIngredients;
+    this.setState({
+      selectedIngredients: ingredientList.filter(ingredient => !_.some([ingredientToRemove], ingredient))
+    });
   }
 
   render() {
@@ -41,6 +57,7 @@ class IngredientSearch extends Component {
           value={this.state.searchText}
           onChange={this.inputTextChange}
           onEnter={this.onEnter}
+          addIngredient={this.addIngredient}
         />
         <FullWidthButton label="Search" to={this.state.searchText} />
       </Page>

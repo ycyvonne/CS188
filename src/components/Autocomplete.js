@@ -21,8 +21,6 @@ class Autocomplete extends Component {
     super(props);
 
     this.state = {
-      // The active selection's index
-      activeSuggestion: 0,
       // The suggestions that match the user's input
       filteredSuggestions: [],
       // Whether or not the suggestion list is shown
@@ -60,40 +58,27 @@ class Autocomplete extends Component {
     });
   };
 
-  onClick = e => {
-    this.props.onEnter(e.currentTarget.innerText);
-  };
+  onClick = (e, index) => {
+    var currentSuggestion = this.state.filteredSuggestions[index];
+    this.props.addIngredient(currentSuggestion);
 
-  onKeyDown = e => {
-    const { activeSuggestion, filteredSuggestions } = this.state;
-
-    // User pressed the enter key
-    if (e.keyCode === 13) {
-        this.props.onEnter(this.state.userInput);
+    var toggle = currentSuggestion.toggle;
+    var newFilteredSuggestions = this.state.filteredSuggestions;
+    if (toggle == null) {
+      newFilteredSuggestions[index] = Object.assign({}, currentSuggestion, {toggle: true});
     }
-    // User pressed the up arrow
-    else if (e.keyCode === 38) {
-      if (activeSuggestion === 0) {
-        return;
-      }
-
-      this.setState({ activeSuggestion: activeSuggestion - 1 });
+    else {
+      newFilteredSuggestions[index] = Object.assign({}, currentSuggestion, {toggle: !toggle});
     }
-    // User pressed the down arrow
-    else if (e.keyCode === 40) {
-      if (activeSuggestion - 1 === filteredSuggestions.length) {
-        return;
-      }
-
-      this.setState({ activeSuggestion: activeSuggestion + 1 });
-    }
+    this.setState({filteredSuggestions: newFilteredSuggestions}, () => {
+      console.log('state', this.state)
+    })
   };
 
   render() {
     const {
       onChange,
       onClick,
-      onKeyDown,
       state: {
         activeSuggestion,
         filteredSuggestions,
@@ -127,7 +112,8 @@ class Autocomplete extends Component {
                   text={suggestion.name}
                   image={suggestion.image}
                   key={index}
-                  onClick={onClick}
+                  onClick={(e) => onClick(e, index)}
+                  toggledCheck={this.state.filteredSuggestions[index].toggle}
                 />
               );
             })}
@@ -170,7 +156,6 @@ class Autocomplete extends Component {
             `}
             type="text"
             onChange={onChange}
-            onKeyDown={onKeyDown}
             value={userInput}
 
             autoFocus={this.props.autoFocus}

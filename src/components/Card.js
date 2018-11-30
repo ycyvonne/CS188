@@ -5,6 +5,7 @@ import shadows from '../global/shadows'
 import colors from '../global/colors'
 import borderRadii from '../global/borderRadii'
 import fonts from '../global/fonts'
+import checkRed from '../assets/icons/check_red.svg'
 
 class Card extends Component {
   state = {
@@ -59,6 +60,7 @@ class Card extends Component {
         </div>
         <div
           className={css`
+            position: relative;
             padding: 16px;
             font-size: 14px;
             font-family: ${fonts.header};
@@ -73,6 +75,10 @@ class Card extends Component {
           `}
         >
           {this.props.text}
+          {this.props.toggledCheck && <img className={css`
+            position: absolute;
+            right: 0;
+          `} src={checkRed} />}
         </div>
       </div>
     )
