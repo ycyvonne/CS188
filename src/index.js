@@ -12,6 +12,7 @@ import IngredientsPage from './pages/IngredientsPage'
 import IngredientSearch from './pages/IngredientSearch'
 import RecipeSearchResults from './pages/RecipeSearchResults'
 import RecipePage from './pages/RecipePage'
+import colors from './global/colors'
 
 import firebase from 'firebase'
 import base, { facebookProvider } from './base'
@@ -135,7 +136,7 @@ class App extends Component {
             @media (max-width: 419px) {
               width: 100vw;
             }
-            background: white;
+            background: ${colors.offwhite};
             height: 100%;
             > div {
               height: 100%;
