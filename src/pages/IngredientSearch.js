@@ -29,7 +29,6 @@ class IngredientSearch extends Component {
       <Page backButton={true} to="/user/ingredients">
         <Header>What ingredients do you have?</Header>
         <Autocomplete
-          suggestions={this.props.allIngredients}
           maxSuggestions={10}
           autoFocus={true}
           placeholder="Ex. Vegetables, Chicken, Dairy, etc."

@@ -29,23 +29,33 @@ class Autocomplete extends Component {
     };
   }
 
-  onChange = e => {
-    const { suggestions } = this.props;
+  async getResults(searchQuery) {
+    const res = await fetch(
+      `https://food-api-proxy.herokuapp.com/ingredient-search?q=${
+        searchQuery
+      }`
+    )
+    return await res.json()
+  }
+
+  onChange = e => {    
     const userInput = e.currentTarget.value;
 
-    // Filter our suggestions that don't contain the user's input
-    const filteredSuggestions = suggestions.filter(
-      suggestion =>
-        suggestion.toLowerCase().indexOf(userInput.toLowerCase()) > -1
-    );
-
     this.setState({
-      activeSuggestion: 0,
-      filteredSuggestions,
-      showSuggestions: true,
-      userInput: e.currentTarget.value
+      userInput: userInput
     });
-    this.props.onChange(e.currentTarget.value);
+    this.getResults(userInput).then(ingredients => {
+      var filteredSuggestions = ingredients.map(a => a.name);
+      this.setState({
+        activeSuggestion: 0,
+        filteredSuggestions,
+        showSuggestions: true
+      });
+      this.props.onChange(userInput);
+    })
+    .catch(err => {
+      console.log('error in fetching ingredients', err);
+    });
   };
 
   onClick = e => {
