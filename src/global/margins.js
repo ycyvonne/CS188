@@ -7,7 +7,7 @@ const margins = {
   medium: '24px',
   mediumLarge: '32px',
   large: '40px',
-  xlarge: '64px'
+  xlarge: '64px',
 }
 
 export default margins

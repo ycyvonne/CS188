@@ -18,6 +18,7 @@ const Page = props => (
       padding: ${margins.small};
     `}
   >
+    {props.topBar}
     {props.backButton && (
       <div
         className={css`
@@ -38,7 +39,6 @@ const Page = props => (
           flex-direction: column;
           justify-content: flex-end;
           bottom: 10px;
-          
         `}
       >
         {props.bottomBar}

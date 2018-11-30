@@ -5,7 +5,6 @@ import colors from '../global/colors'
 import borderRadii from '../global/borderRadii'
 
 class Input extends Component {
-
   render() {
     return (
       <input
@@ -33,4 +32,6 @@ class Input extends Component {
   }
 }
 
-export default React.forwardRef((props, ref) => <Input innerref={ref} {...props}/>);
+export default React.forwardRef((props, ref) => (
+  <Input innerref={ref} {...props} />
+))

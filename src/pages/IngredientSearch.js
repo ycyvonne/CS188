@@ -20,7 +20,7 @@ class IngredientSearch extends Component {
   handleInputKeyUp = event => {
     // enter key pressed
     if (event.keyCode == 13) {
-        navigate(`/user/ingredient-search/${this.state.searchText}`);
+      navigate(`/user/ingredient-search/${this.state.searchText}`)
     }
   }
 
