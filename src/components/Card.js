@@ -56,6 +56,14 @@ class Card extends Component {
                 border-radius: 50%;
               `}
             >
+              {
+                !this.props.selected && <div className={css`
+                  height: 36px;
+                  width: 36px;
+                  border: 4px solid #ffffff;
+                  border-radius: 50%;
+              `}></div>
+              }
               {this.props.selected && <img className={css`
                 height: 100%;
                 width: 100%;

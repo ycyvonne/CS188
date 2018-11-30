@@ -160,7 +160,7 @@ class Autocomplete extends Component {
           {this.state.userInput != '' && <img 
             src={x}
             alt="clear search input"
-            onClick={() => {this.setState({userInput: ''})}}
+            onClick={() => {this.setState({userInput: '', filteredSuggestions: []})}}
             className={css`
             position: absolute;
             top: 0px;
