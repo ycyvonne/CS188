@@ -2,39 +2,40 @@ import React, { Component } from 'react'
 import { navigate } from '@reach/router'
 
 import Page from '../components/Page'
-import Input from '../components/Input'
 import Header from '../components/Header'
 import FullWidthButton from '../components/FullWidthButton'
+import Autocomplete from '../components/Autocomplete'
 
 class IngredientSearch extends Component {
-  inputRef = React.createRef()
 
-  state = {
-    searchText: '',
-  }
-
-  inputTextChange = event => {
-    this.setState({ searchText: event.target.value })
-  }
-
-  handleInputKeyUp = event => {
-    // enter key pressed
-    if (event.keyCode == 13) {
-        navigate(`/user/ingredient-search/${this.state.searchText}`);
+  constructor(props) {
+    super(props);
+    this.props = props;
+    this.state = {
+      searchText: '',
     }
+  }
+
+  inputTextChange = userInput => {
+    this.setState({ searchText: userInput })
+  }
+
+  onEnter(text) {
+    navigate(`/user/ingredient-search/${text}`);
   }
 
   render() {
     return (
       <Page backButton={true} to="/user/ingredients">
         <Header>What ingredients do you have?</Header>
-        <Input
-          ref={this.inputRef}
+        <Autocomplete
+          suggestions={this.props.allIngredients}
+          maxSuggestions={10}
           autoFocus={true}
           placeholder="Ex. Vegetables, Chicken, Dairy, etc."
           value={this.state.searchText}
           onChange={this.inputTextChange}
-          onKeyUp={this.handleInputKeyUp}
+          onEnter={this.onEnter}
         />
         <FullWidthButton label="Search" to={this.state.searchText} />
       </Page>

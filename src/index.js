@@ -20,6 +20,8 @@ import RecipePage from './pages/RecipePage'
 import firebase from 'firebase';
 import base, { facebookProvider } from './base'
 
+import ingredientsAllList from './assets/data/ingredients'
+
 import ingredientsList from './reducers'
 import * as _ from 'lodash'
 
@@ -36,7 +38,8 @@ class App extends Component {
     this.state = {
       user: null,
       ingredients: [],
-      synced: false
+      synced: false,
+      allIngredients: ingredientsAllList.map(a => a.ingredient)
     };
   }
 
@@ -163,7 +166,9 @@ class App extends Component {
                 user={this.state.user}
                 synced={this.state.synced}
               />
-              <IngredientSearch path="ingredient-search" />
+              <IngredientSearch
+                path="ingredient-search"
+                allIngredients={this.state.allIngredients}/>
               <IngredientSearchResults path="ingredient-search/:ingredient"
                 addIngredient={this.addIngredient}
               />

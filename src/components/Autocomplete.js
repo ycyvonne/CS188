@@ -104,7 +104,7 @@ class Autocomplete extends Component {
             border-radius: ${borderRadii.small};
             background: #f5f5f5;
           `}>
-            {filteredSuggestions.map((suggestion, index) => {
+            {filteredSuggestions.slice(0, this.props.maxSuggestions).map((suggestion, index) => {
               let className = ' ';
 
               // Flag the active suggestion with a class
