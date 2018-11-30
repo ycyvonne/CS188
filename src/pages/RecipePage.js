@@ -99,8 +99,8 @@ class RecipePage extends Component {
                     step => step.ingredients
                   )
                 ).map(ing => ing.name)
-              ).map(ing => (
-                <li>{ing.name}</li>
+              ).map((ingName, i) => (
+                <li key={i}>{ingName}</li>
               ))}
             </div>
           )}
