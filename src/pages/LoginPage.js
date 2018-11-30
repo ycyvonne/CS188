@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { css } from 'react-emotion'
 import colors from '../global/colors'
 
 import Page from '../components/Page'
@@ -17,9 +18,10 @@ class LoginPage extends Component {
     return (
       <Page
         backButton={false}
-        customClasses={`justify-content:center; ${
-          !loggingIn ? 'background-color: ' + colors.red : ''
-        }`}
+        customClasses={css`
+          justify-content: center;
+          ${!loggingIn ? 'background-color: ' + colors.red : ''}
+        `}
       >
         {!loggingIn && <Logo />}
         {loggingIn && <Loading />}
