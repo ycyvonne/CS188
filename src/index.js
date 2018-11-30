@@ -35,7 +35,8 @@ class App extends Component {
     this.props = props;
     this.state = {
       user: null,
-      ingredients: []
+      ingredients: [],
+      synced: false
     };
   }
 
@@ -71,7 +72,10 @@ class App extends Component {
       this.ref = base.syncState(`users/${this.state.user.uid}`, {
         context: this,
         state: 'ingredients',
-        asArray: true
+        asArray: true,
+        then: () => {
+          this.setState({ synced: true });
+        }
       });
     }
     else {
@@ -156,6 +160,8 @@ class App extends Component {
               <IngredientsPage path="ingredients"
                 ingredients={this.state.ingredients}
                 removeIngredients={this.removeIngredients}
+                user={this.state.user}
+                synced={this.state.synced}
               />
               <IngredientSearch path="ingredient-search" />
               <IngredientSearchResults path="ingredient-search/:ingredient"
