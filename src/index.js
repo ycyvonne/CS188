@@ -12,8 +12,6 @@ import RequireAuth from './pages/RequireAuth'
 import LoginPage from './pages/LoginPage'
 import IngredientsPage from './pages/IngredientsPage/container'
 import IngredientSearch from './pages/IngredientSearch'
-import IngredientSearchResults from './pages/IngredientSearchResults/container'
-import RecipeCustomize from './pages/RecipeCustomize'
 import RecipeSearchResults from './pages/RecipeSearchResults/container'
 import RecipePage from './pages/RecipePage'
 
@@ -39,10 +37,10 @@ class App extends Component {
     }
   }
 
-  addIngredients = (ingredients) => {
+  addIngredients = ingredients => {
     this.setState({
-      ingredients: this.state.ingredients.concat(ingredients)
-    });
+      ingredients: this.state.ingredients.concat(ingredients),
+    })
   }
 
   removeIngredients = ingredientsListToRemove => {
@@ -142,6 +140,9 @@ class App extends Component {
         <div
           className={css`
             width: 420px;
+            @media (max-width: 419px) {
+              width: 100vw;
+            }
             background: white;
             height: 100%;
             > div {
