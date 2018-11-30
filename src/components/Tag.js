@@ -22,7 +22,7 @@ const Tag = props => (
     <img 
       src={x}
       alt="delete this ingredient"
-      // onClick={() => {this.setState({userInput: ''})}}
+      onClick={props.onClick}
       className={css`
       padding: 10px;
       height: 34px;

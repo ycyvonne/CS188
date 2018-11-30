@@ -25,10 +25,6 @@ class IngredientSearch extends Component {
     this.setState({ searchText: userInput })
   }
 
-  onEnter(text) {
-    navigate(`/user/ingredient-search/${text}`);
-  }
-
   addIngredientToTemp = newIngredient => {
     this.setState({
       selectedIngredients: [newIngredient].concat(this.state.selectedIngredients)
@@ -43,7 +39,6 @@ class IngredientSearch extends Component {
   }
 
   addIngredientsToStore = () => {
-    console.log('adding to list', this.state.selectedIngredients)
     this.props.addIngredients(this.state.selectedIngredients);
   }
 
@@ -62,13 +57,27 @@ class IngredientSearch extends Component {
           placeholder="Ex. Vegetables, Chicken, Dairy, etc."
           value={this.state.searchText}
           onChange={this.inputTextChange}
-          onEnter={this.onEnter}
-          addIngredient={this.addIngredientToTemp}
-          removeIngredient={this.removeIngredientToTemp}
-        />
-        <TempSelectionBox 
           selections={this.state.selectedIngredients}
-          addToList={this.addIngredientsToStore}/>
+          addIngredient={this.addIngredientToTemp}
+          removeIngredient={this.removeIngredientFromTemp}
+        />
+        {
+          this.state.selectedIngredients.length != 0 &&
+          <TempSelectionBox 
+            selections={this.state.selectedIngredients}
+            removeIngredient={this.removeIngredientFromTemp}
+            addToList={this.addIngredientsToStore}/>
+        }
+        {
+          this.state.selectedIngredients.length == 0 && this.state.searchText == '' &&
+          <Header style={css`
+            text-align: center;
+            position: absolute;
+            top: 40%;
+            transform: translateY(-50%);
+            width: 80%;
+          `}>Start typing names of ingredients to add to your list.</Header>
+        }
       </Page>
     )
   }
