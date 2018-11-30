@@ -40,9 +40,9 @@ class App extends Component {
     };
   }
 
-  addIngredient = (ingredient) => {
+  addIngredients = (ingredients) => {
     this.setState({
-      ingredients: this.state.ingredients.concat([ingredient])
+      ingredients: this.state.ingredients.concat(ingredients)
     });
   }
 
@@ -165,9 +165,7 @@ class App extends Component {
               />
               <IngredientSearch
                 path="ingredient-search"
-              />
-              <IngredientSearchResults path="ingredient-search/:ingredient"
-                addIngredient={this.addIngredient}
+                addIngredients={this.addIngredients}
               />
               <RecipeSearchResults path="recipe-search-results"
                 ingredients={this.state.ingredients}

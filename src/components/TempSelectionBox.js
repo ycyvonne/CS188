@@ -6,7 +6,14 @@ import colors from '../global/colors'
 import Tag from './Tag';
 import FullWidthButton from '../components/FullWidthButton'
 
+import { navigate } from '@reach/router'
+
 class TempSelectionBox extends Component {
+
+  handleAddToList = () => {
+    this.props.addToList();
+    navigate('/user/ingredients');
+  }
 
   render() {
     return (
@@ -40,7 +47,7 @@ class TempSelectionBox extends Component {
             width: 100%;
             padding: 10px 20px;
         `}>
-            <FullWidthButton label="Add to List" to="/user/ingredients" light={true}/>
+            <FullWidthButton label="Add to List" light={true} onClick={this.handleAddToList}/>
         </div>
       </div>
     )

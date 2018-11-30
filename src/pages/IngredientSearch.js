@@ -29,17 +29,22 @@ class IngredientSearch extends Component {
     navigate(`/user/ingredient-search/${text}`);
   }
 
-  addIngredient = newIngredient => {
+  addIngredientToTemp = newIngredient => {
     this.setState({
       selectedIngredients: [newIngredient].concat(this.state.selectedIngredients)
     });
   }
 
-  removeIngredient = ingredientToRemove => {
+  removeIngredientFromTemp = ingredientToRemove => {
     var ingredientList = this.state.selectedIngredients;
     this.setState({
       selectedIngredients: ingredientList.filter(ingredient => !_.some([ingredientToRemove], ingredient))
     });
+  }
+
+  addIngredientsToStore = () => {
+    console.log('adding to list', this.state.selectedIngredients)
+    this.props.addIngredients(this.state.selectedIngredients);
   }
 
   render() {
@@ -58,12 +63,12 @@ class IngredientSearch extends Component {
           value={this.state.searchText}
           onChange={this.inputTextChange}
           onEnter={this.onEnter}
-          addIngredient={this.addIngredient}
-          removeIngredient={this.removeIngredient}
+          addIngredient={this.addIngredientToTemp}
+          removeIngredient={this.removeIngredientToTemp}
         />
         <TempSelectionBox 
-          selections={this.state.selectedIngredients}/>
-        {/* <FullWidthButton label="Search" to={this.state.searchText} /> */}
+          selections={this.state.selectedIngredients}
+          addToList={this.addIngredientsToStore}/>
       </Page>
     )
   }
