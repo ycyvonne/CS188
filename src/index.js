@@ -140,6 +140,7 @@ class App extends Component {
             height: 100%;
             > div {
               height: 100%;
+              width: inherit;
               overflow: scroll;
             }
           `}

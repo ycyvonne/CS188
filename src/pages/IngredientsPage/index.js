@@ -113,14 +113,21 @@ class IngredientsPage extends Component {
             className={css`
               display: grid;
               grid-template-columns: 1fr 1fr;
-              width: 100%;
+              width: inherit;
+              padding: 10px 20px;
             `}
           >
             {buttons}
           </div>
         }
       >
+        <div className={css`
+          width: inherit;
+          height: 100%;
+          padding: 0 16px 24px 16px;
+        `}>
         {ingredientsView}
+        </div>
       </Page>
     )
   }

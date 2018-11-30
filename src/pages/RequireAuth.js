@@ -17,8 +17,10 @@ class RequireAuth extends Component {
         return (
             <div className={css`
                 height: 100%;
+                width: inherit;
                 > * {
                     height: 100%;
+                    width: inherit;
                 }
             `}>
                 {this.props.children}
