@@ -91,8 +91,10 @@ class Autocomplete extends Component {
             list-style-type: none;
             margin-top: 0;
             width: 100%;
-            padding: 8px 0;
+            padding: 8px 8px;
             border-radius: ${borderRadii.small};
+            height: 100%;
+            overflow: scroll;
           `}>
             {filteredSuggestions.slice(0, this.props.maxSuggestions).map((suggestion, index) => {
               let className = ' ';

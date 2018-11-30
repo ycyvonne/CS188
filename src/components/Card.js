@@ -90,7 +90,7 @@ class Card extends Component {
           {this.props.text}
           {this.props.toggledCheck && <img className={css`
             position: absolute;
-            right: 0;
+            right: 10px;
           `} src={checkRed} />}
         </div>
       </div>
