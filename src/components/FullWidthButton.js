@@ -28,11 +28,7 @@ const FullWidthButton = props => {
         font-weight: bold;
         text-decoration: none;
       `}
-      onClick={
-        props.onClick
-            ? props.onClick
-            : () => navigate(props.to)
-      }
+      onClick={props.onClick ? props.onClick : () => navigate(props.to)}
     >
       <div>{props.label}</div>
     </div>

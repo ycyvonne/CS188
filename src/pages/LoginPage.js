@@ -17,7 +17,9 @@ class LoginPage extends Component {
     return (
       <Page
         backButton={false}
-        customClasses={`justify-content:center; ${!loggingIn ? 'background-color: ' + colors.red : ''}`}
+        customClasses={`justify-content:center; ${
+          !loggingIn ? 'background-color: ' + colors.red : ''
+        }`}
       >
         {!loggingIn && <Logo />}
         {loggingIn && <Loading />}

@@ -65,10 +65,7 @@ const Modal = ({ handleConfirm, handleClose, show, children }) => {
             onClick={handleClose}
           />
           {children}
-          <FullWidthButton
-            label="confirm"
-            onClick={handleConfirm}
-          />
+          <FullWidthButton label="confirm" onClick={handleConfirm} />
         </div>
       </section>
     </div>

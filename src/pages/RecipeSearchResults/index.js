@@ -8,10 +8,9 @@ import Card from '../../components/Card'
 import Loading from '../../components/Loading'
 
 class RecipeSearchResults extends Component {
-  
   constructor(props) {
-    super(props);
-    this.props = props;
+    super(props)
+    this.props = props
     this.state = {
       fetched: false,
       results: [],

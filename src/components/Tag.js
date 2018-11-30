@@ -19,15 +19,18 @@ const Tag = props => (
     `}
   >
     {props.children}
-    {props.hasCancel && <img 
-      src={x}
-      alt="delete this ingredient"
-      onClick={props.onClick}
-      className={css`
-      padding: 10px;
-      height: 34px;
-      cursor: pointer;
-    `}/>}
+    {props.hasCancel && (
+      <img
+        src={x}
+        alt="delete this ingredient"
+        onClick={props.onClick}
+        className={css`
+          padding: 10px;
+          height: 34px;
+          cursor: pointer;
+        `}
+      />
+    )}
   </span>
 )
 

@@ -4,10 +4,10 @@ export const addIngredient = ingredient => ({
 })
 
 export const removeIngredients = ingredients => {
-  return ({
+  return {
     type: 'REMOVE_INGREDIENTS',
     ingredientNames: ingredients
-                        .filter(ingredient => !!ingredient)
-                        .map(ingredient => ingredient.name),
-  })  
+      .filter(ingredient => !!ingredient)
+      .map(ingredient => ingredient.name),
+  }
 }
