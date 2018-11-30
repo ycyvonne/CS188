@@ -16,6 +16,7 @@ const Page = props => (
       height: 100%;
       width: inherit;
       padding: ${margins.small};
+      ${props.customClasses}
     `}
   >
     {props.topBar}
