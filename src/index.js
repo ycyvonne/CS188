@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import { Provider } from 'react-redux'
-import { createStore } from 'redux'
 import { Router, navigate } from '@reach/router'
 import { css } from 'react-emotion'
 
@@ -10,21 +8,15 @@ import './global/globalStyles'
 
 import RequireAuth from './pages/RequireAuth'
 import LoginPage from './pages/LoginPage'
-import IngredientsPage from './pages/IngredientsPage/container'
+import IngredientsPage from './pages/IngredientsPage'
 import IngredientSearch from './pages/IngredientSearch'
-import RecipeSearchResults from './pages/RecipeSearchResults/container'
+import RecipeSearchResults from './pages/RecipeSearchResults'
 import RecipePage from './pages/RecipePage'
 
 import firebase from 'firebase'
 import base, { facebookProvider } from './base'
 
-import ingredientsList from './reducers'
-import * as _ from 'lodash'
-
-const store = createStore(
-  ingredientsList,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-)
+import _ from 'lodash'
 
 class App extends Component {
   constructor(props) {
@@ -179,9 +171,4 @@ class App extends Component {
   }
 }
 
-ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById('root')
-)
+ReactDOM.render(<App />, document.getElementById('root'))
