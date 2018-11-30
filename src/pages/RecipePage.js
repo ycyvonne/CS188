@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { css } from 'react-emotion'
+import _ from 'lodash'
 
 import LeftArrow from '../components/LeftArrow'
 import Tag from '../components/Tag'
@@ -92,9 +93,13 @@ class RecipePage extends Component {
           {!!this.state.recipeInfo && !!this.state.recipeInfo.instructions[0] && (
             <div>
               <h3>You will need:</h3>
-              {this.state.recipeInfo.instructions[0].steps.map(step =>
-                step.ingredients.map(ing => <li>{ing.name}</li>)
-              )}
+              {_.uniq(
+                this.state.recipeInfo.instructions[0].steps.map(
+                  step => step.ingredients
+                )
+              ).map(ing => (
+                <li>{ing.name}</li>
+              ))}
             </div>
           )}
 
