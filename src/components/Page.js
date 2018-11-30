@@ -16,8 +16,10 @@ const Page = props => (
       height: 100%;
       width: inherit;
       padding: ${margins.small};
+      ${props.customClasses}
     `}
   >
+    {props.topBar}
     {props.backButton && (
       <div
         className={css`
@@ -39,7 +41,6 @@ const Page = props => (
           flex-direction: column;
           justify-content: flex-end;
           bottom: 10px;
-          
         `}
       >
         {props.bottomBar}

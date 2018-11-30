@@ -1,18 +1,21 @@
 import React, { Component } from 'react'
 import { css } from 'react-emotion'
+import { Redirect, navigate } from '@reach/router'
 
 import Header from '../../components/Header'
 import Card from '../../components/Card'
 import Page from '../../components/Page'
 import Button from '../../components/Button'
 import Loading from '../../components/Loading'
+import Modal from '../../components/Modal'
 
 class IngredientsPage extends Component {
   constructor(props) {
-    super(props);
-    this.props = props;
+    super(props)
+    this.props = props
     this.state = {
       selectMode: false,
+      show: false,
       selectedButtons: Array.apply(
         null,
         Array(this.props.ingredients.length)
@@ -47,18 +50,34 @@ class IngredientsPage extends Component {
     this.setState({ selectMode: false })
   }
 
+  confirmLogout = () => {
+    sessionStorage.removeItem('user')
+    navigate('/')
+  }
+
+  showModal = () => {
+    this.setState({ show: true })
+  }
+
+  hideModal = () => {
+    this.setState({ show: false })
+  }
+
   render() {
-    var ingredientsView;
+    var ingredientsView
     if (this.props.ingredients.length === 0) {
-      var startingMessage = '';
+      var startingMessage = ''
       if (this.props.user) {
-        var userFirstName = this.props.user.displayName.split(' ')[0];
+        var userFirstName = this.props.user.displayName.split(' ')[0]
         startingMessage = `Hi ${userFirstName}! `
       }
-      
-      ingredientsView = <Header>{startingMessage}Get started by adding what ingredients you have.</Header>
-    }
-    else {
+
+      ingredientsView = (
+        <Header>
+          {startingMessage}Get started by adding what ingredients you have.
+        </Header>
+      )
+    } else {
       ingredientsView = (
         <>
           {this.props.ingredients.map((ingredient, i) => (
@@ -74,10 +93,28 @@ class IngredientsPage extends Component {
         </>
       )
     }
+    const topBar = (
+      <div
+        className={css`
+          display: grid;
+          grid-template-columns: 1fr;
+          width: 100%;
+          margin: 10px;
+        `}
+      >
+        <Button
+          className={css`
+            justify-self: right;
+          `}
+          type="logout"
+          onClick={this.showModal}
+        />
+      </div>
+    )
 
-    const buttons = this.state.selectMode ? (
+    const actionButtons = this.state.selectMode ? (
       <>
-       <Button
+        <Button
           className={css`
             justify-self: left;
           `}
@@ -113,9 +150,9 @@ class IngredientsPage extends Component {
         />
       </>
     )
-
     return (
       <Page
+        topBar={topBar}
         bottomBar={
           <div
             className={css`
@@ -125,23 +162,36 @@ class IngredientsPage extends Component {
               padding: 10px 20px;
             `}
           >
-            {buttons}
+            {actionButtons}
           </div>
         }
       >
-        {
-          !this.props.synced && <Loading />
-        }
-        {
-          this.props.synced && 
-          <div className={css`
-            width: inherit;
-            height: 100%;
-            padding: 0 16px 24px 16px;
-          `}>
-          {ingredientsView}
+        <Modal
+          show={this.state.show}
+          handleConfirm={this.confirmLogout}
+          handleClose={this.hideModal}
+        >
+          <p
+            className={css`
+              justify-self: center;
+              font-weight: bold;
+            `}
+          >
+            Would you like to logout?
+          </p>
+        </Modal>
+        {!this.props.synced && <Loading />}
+        {this.props.synced && (
+          <div
+            className={css`
+              width: inherit;
+              height: 100%;
+              padding: 0 16px 24px 16px;
+            `}
+          >
+            {ingredientsView}
           </div>
-        }
+        )}
       </Page>
     )
   }
