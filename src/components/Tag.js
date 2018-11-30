@@ -19,7 +19,7 @@ const Tag = props => (
     `}
   >
     {props.children}
-    <img 
+    {props.hasCancel && <img 
       src={x}
       alt="delete this ingredient"
       onClick={props.onClick}
@@ -27,7 +27,7 @@ const Tag = props => (
       padding: 10px;
       height: 34px;
       cursor: pointer;
-    `}/>
+    `}/>}
   </span>
 )
 

@@ -41,7 +41,7 @@ class TempSelectionBox extends Component {
                 `}>
                     {
                         this.props.selections.map((ingredient, i) => {
-                            return (<Tag key={i} onClick={() => this.props.removeIngredient(ingredient)}>{ingredient.name}</Tag>)
+                            return (<Tag key={i} hasCancel={true} onClick={() => this.props.removeIngredient(ingredient)}>{ingredient.name}</Tag>)
                         })
                     }
                 </div>
