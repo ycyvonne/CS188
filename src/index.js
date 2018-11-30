@@ -39,10 +39,10 @@ class App extends Component {
     }
   }
 
-  addIngredient = ingredient => {
+  addIngredients = (ingredients) => {
     this.setState({
-      ingredients: this.state.ingredients.concat([ingredient]),
-    })
+      ingredients: this.state.ingredients.concat(ingredients)
+    });
   }
 
   removeIngredients = ingredientsListToRemove => {
@@ -161,10 +161,9 @@ class App extends Component {
                 user={this.state.user}
                 synced={this.state.synced}
               />
-              <IngredientSearch path="ingredient-search" />
-              <IngredientSearchResults
-                path="ingredient-search/:ingredient"
-                addIngredient={this.addIngredient}
+              <IngredientSearch
+                path="ingredient-search"
+                addIngredients={this.addIngredients}
               />
               <RecipeSearchResults
                 path="recipe-search-results"

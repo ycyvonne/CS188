@@ -112,7 +112,7 @@ class Button extends Component {
         width = '100%'
         height = '70px'
         break
-      case 'logout':
+      case 'text':
         renderSymbol = (
           <div
             className={css`
@@ -120,8 +120,7 @@ class Button extends Component {
               align-items: center;
               justify-content: center;
               font-size: 18px;
-              color: ${colors.white};
-              padding: ${margins.medium};
+              padding: 0;
             `}
           >
             <span
@@ -129,38 +128,13 @@ class Button extends Component {
                 margin-left: ${margins.xtiny};
               `}
             >
-              Logout
+              {this.props.text}
             </span>
           </div>
         )
         borderRadius = '32px'
         width = '100px'
-        height = '70px'
-        break
-      case 'confirm':
-        renderSymbol = (
-          <div
-            className={css`
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              font-size: 18px;
-              color: ${colors.white};
-              padding: ${margins.medium};
-            `}
-          >
-            <span
-              className={css`
-                margin-left: ${margins.xtiny};
-              `}
-            >
-              Confirm
-            </span>
-          </div>
-        )
-        borderRadius = '32px'
-        width = '100px'
-        height = '70px'
+        height = '50px'
         break
       default:
         break

@@ -1,7 +1,6 @@
 import React from 'react'
 import { css } from 'react-emotion'
-import { Link } from '@reach/router'
-
+import { navigate } from '@reach/router'
 import colors from '../global/colors'
 
 const FullWidthButton = props => {
@@ -15,9 +14,10 @@ const FullWidthButton = props => {
         color: ${colors.white};
       `
   return (
-    <Link
+    <div
       className={css`
         ${themeStyles}
+        cursor: pointer;
         border-radius: 32px;
         box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.1);
         display: flex;
@@ -28,10 +28,14 @@ const FullWidthButton = props => {
         font-weight: bold;
         text-decoration: none;
       `}
-      to={props.to}
+      onClick={
+        props.onClick
+            ? props.onClick
+            : () => navigate(props.to)
+      }
     >
       <div>{props.label}</div>
-    </Link>
+    </div>
   )
 }
 

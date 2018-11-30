@@ -17,9 +17,9 @@ class LoginPage extends Component {
     return (
       <Page
         backButton={false}
-        customClasses={`justify-content:center; background:${colors.red};`}
+        customClasses={`justify-content:center; ${!loggingIn ? 'background-color: ' + colors.red : ''}`}
       >
-        <Logo />
+        {!loggingIn && <Logo />}
         {loggingIn && <Loading />}
         {!loggingIn && <FacebookBtn onClick={this.props.login} />}
       </Page>

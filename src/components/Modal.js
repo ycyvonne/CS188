@@ -2,10 +2,12 @@ import React from 'react'
 import { css } from 'react-emotion'
 
 import Button from '../components/Button'
+import FullWidthButton from '../components/FullWidthButton'
 
 const Modal = ({ handleConfirm, handleClose, show, children }) => {
   const modalStyles = css`
-    position: fixed;
+    position: absolute;
+    z-index: 100;
     top: 0;
     left: 0;
     width: 100%;
@@ -20,9 +22,9 @@ const Modal = ({ handleConfirm, handleClose, show, children }) => {
         display: none;
       `
   const modalMainStyles = css`
-    position: fixed;
+    position: absolute;
     background: white;
-    width: 420px;
+    width: 80%;
     height: auto;
     border-radius: 8px;
     top: 50%;
@@ -43,6 +45,7 @@ const Modal = ({ handleConfirm, handleClose, show, children }) => {
       >
         <div
           className={css`
+            position: relative;
             display: grid;
             grid-template-columns: 1fr;
             width: 100%;
@@ -52,17 +55,18 @@ const Modal = ({ handleConfirm, handleClose, show, children }) => {
           <Button
             className={css`
               justify-self: right;
+              position: absolute;
+              top: 0;
+              right: 0;
+              transform: translate(50%, -50%);
             `}
             light={true}
             type="x"
             onClick={handleClose}
           />
           {children}
-          <Button
-            className={css`
-              justify-self: center;
-            `}
-            type="confirm"
+          <FullWidthButton
+            label="confirm"
             onClick={handleConfirm}
           />
         </div>

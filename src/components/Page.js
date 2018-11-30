@@ -24,6 +24,7 @@ const Page = props => (
       <div
         className={css`
           width: 100%;
+          ${props.backStyles}
         `}
       >
         <LeftArrow color={colors.black} to={props.to} />
