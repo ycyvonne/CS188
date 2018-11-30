@@ -40,6 +40,9 @@ const Page = props => (
           width: inherit;
           flex-direction: column;
           justify-content: flex-end;
+          position: fixed;
+          left: 50%;
+          margin-left: -210px;
           bottom: 10px;
         `}
       >
