@@ -5,6 +5,8 @@ import shadows from '../global/shadows'
 import colors from '../global/colors'
 import borderRadii from '../global/borderRadii'
 import fonts from '../global/fonts'
+
+import checkWhite from '../assets/icons/check_white.svg'
 import checkRed from '../assets/icons/check_red.svg'
 
 class Card extends Component {
@@ -51,11 +53,14 @@ class Card extends Component {
               className={css`
                 height: 36px;
                 width: 36px;
-                border: 3px solid #ffffff;
                 border-radius: 50%;
-                ${this.props.selected ? `background-color: ${colors.red}` : ''}
               `}
-            />
+            >
+              {this.props.selected && <img className={css`
+                height: 100%;
+                width: 100%;
+              `} src={checkWhite} />}
+            </div>
           )}
         </div>
         <div
