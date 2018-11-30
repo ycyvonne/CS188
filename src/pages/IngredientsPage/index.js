@@ -106,7 +106,9 @@ class IngredientsPage extends Component {
           className={css`
             justify-self: right;
           `}
-          type="logout"
+          type="text"
+          text="Logout"
+          light={true}
           onClick={this.showModal}
         />
       </div>
