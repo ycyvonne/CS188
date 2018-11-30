@@ -8,7 +8,7 @@ const Loading = props => (
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            width: 400px;
+            width: 200px;
   `}/>
 )
 
