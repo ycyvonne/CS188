@@ -4,21 +4,28 @@ import { css } from 'react-emotion'
 import LeftArrow from './LeftArrow'
 import colors from '../global/colors'
 
+import margins from '../global/margins'
+
 const Page = props => (
   <div
     className={css`
+      background-color: ${colors.offwhite};
+      position: relative;
       display: flex;
       flex-direction: column;
       align-items: center;
       height: 100%;
-      width: 100%;
-      padding: 24px 16px;
+      width: inherit;
+      padding: ${margins.small};
+      ${props.customClasses}
     `}
   >
+    {props.topBar}
     {props.backButton && (
       <div
         className={css`
           width: 100%;
+          ${props.backStyles}
         `}
       >
         <LeftArrow color={colors.black} to={props.to} />
@@ -29,10 +36,14 @@ const Page = props => (
       <div
         className={css`
           flex: 1;
-          width: 100%;
           display: flex;
+          width: inherit;
           flex-direction: column;
           justify-content: flex-end;
+          position: fixed;
+          left: 50%;
+          margin-left: -210px;
+          bottom: 10px;
         `}
       >
         {props.bottomBar}

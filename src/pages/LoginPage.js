@@ -1,21 +1,31 @@
 import React, { Component } from 'react'
+import { css } from 'react-emotion'
+import colors from '../global/colors'
+
 import Page from '../components/Page'
 import FacebookBtn from '../components/FacebookBtn'
 import Loading from '../components/Loading'
+import Logo from '../components/Logo'
 
 class LoginPage extends Component {
-
   constructor(props) {
-    super(props);
-    this.props = props;
+    super(props)
+    this.props = props
   }
 
   render() {
-    var loggingIn = sessionStorage.getItem("loggingIn")
+    var loggingIn = sessionStorage.getItem('loggingIn')
     return (
-      <Page backButton={false}>
+      <Page
+        backButton={false}
+        customClasses={css`
+          justify-content: center;
+          ${!loggingIn ? 'background-color: ' + colors.red : ''}
+        `}
+      >
+        {!loggingIn && <Logo />}
         {loggingIn && <Loading />}
-        {!loggingIn && <FacebookBtn onClick={this.props.login}/>}
+        {!loggingIn && <FacebookBtn onClick={this.props.login} />}
       </Page>
     )
   }

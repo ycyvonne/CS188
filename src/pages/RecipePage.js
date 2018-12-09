@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { css } from 'react-emotion'
+import _ from 'lodash'
 
 import LeftArrow from '../components/LeftArrow'
 import Tag from '../components/Tag'
@@ -67,6 +68,7 @@ class RecipePage extends Component {
         <div
           className={css`
             padding: 1rem;
+            background-color: ${colors.offwhite};
           `}
         >
           {!!this.state.recipeInfo && (
@@ -95,6 +97,15 @@ class RecipePage extends Component {
               {this.state.recipeInfo.instructions[0].steps.map(step =>
                 step.ingredients.map(ing => <li>{ing.name}</li>)
               )}
+              {_.uniq(
+                _.flattenDeep(
+                  this.state.recipeInfo.instructions[0].steps.map(
+                    step => step.ingredients
+                  )
+                ).map(ing => ing.name)
+              ).map((ingName, i) => (
+                <li key={i}>{ingName}</li>
+              ))}
             </div>
           )}
 
@@ -113,7 +124,13 @@ class RecipePage extends Component {
                         >
                           {step.number}
                         </div>
-                        <p>{step.step}</p>
+                        <p
+                          className={css`
+                            margin-top: 0;
+                          `}
+                        >
+                          {step.step}
+                        </p>
                       </div>
                     ))}
                 </section>

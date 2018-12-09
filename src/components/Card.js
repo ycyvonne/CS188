@@ -6,6 +6,9 @@ import colors from '../global/colors'
 import borderRadii from '../global/borderRadii'
 import fonts from '../global/fonts'
 
+import checkWhite from '../assets/icons/check_white.svg'
+import checkRed from '../assets/icons/check_red.svg'
+
 class Card extends Component {
   state = {
     selectMode: false,
@@ -25,6 +28,7 @@ class Card extends Component {
           box-shadow: ${shadows.default};
           border-radius: ${borderRadii.small};
           width: 100%;
+          min-height: 60px;
           height: 60px;
           display: flex;
           margin-bottom: 15px;
@@ -49,17 +53,36 @@ class Card extends Component {
               className={css`
                 height: 36px;
                 width: 36px;
-                border: 3px solid #ffffff;
                 border-radius: 50%;
-                ${this.props.selected ? `background-color: ${colors.red}` : ''}
               `}
-            />
+            >
+              {!this.props.selected && (
+                <div
+                  className={css`
+                    height: 36px;
+                    width: 36px;
+                    border: 4px solid #ffffff;
+                    border-radius: 50%;
+                  `}
+                />
+              )}
+              {this.props.selected && (
+                <img
+                  className={css`
+                    height: 100%;
+                    width: 100%;
+                  `}
+                  src={checkWhite}
+                />
+              )}
+            </div>
           )}
         </div>
         <div
           className={css`
+            position: relative;
             padding: 16px;
-            font-size: 14px;
+            font-size: 18px;
             font-family: ${fonts.header};
             font-weight: bold;
             display: flex;
@@ -72,6 +95,15 @@ class Card extends Component {
           `}
         >
           {this.props.text}
+          {this.props.toggledCheck && (
+            <img
+              className={css`
+                position: absolute;
+                right: 10px;
+              `}
+              src={checkRed}
+            />
+          )}
         </div>
       </div>
     )
