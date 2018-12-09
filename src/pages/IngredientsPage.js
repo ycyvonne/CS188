@@ -24,7 +24,6 @@ class IngredientsPage extends Component {
   }
 
   toggleButtonSelect = i => {
-    console.log(i)
     let selectedButtons = {}
     if (!this.state.selectMode) {
       this.setState({ selectMode: true })
@@ -95,7 +94,6 @@ class IngredientsPage extends Component {
             <h3>{el.aisle}</h3>,
             ...el.ingredients.map(ingredient => {
               var j = i++
-              console.log(j)
               return (
                 <Card
                   key={j}
