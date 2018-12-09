@@ -15,13 +15,15 @@ const Loading = props => (
         width: 200px;
       `}
     />
-    <div className={css`
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: white;
-      z-index: 1;
-    `}></div>
+    <div
+      className={css`
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: white;
+        z-index: 1;
+      `}
+    />
   </>
 )
 

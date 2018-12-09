@@ -78,18 +78,34 @@ class IngredientsPage extends Component {
         </Header>
       )
     } else {
+      var aisles = new Set()
+      this.props.ingredients.forEach(el => aisles.add(el.aisle))
+      var categorizedIngredients = Array.from(aisles).map(aisle => ({
+        aisle: aisle,
+        ingredients: this.props.ingredients.filter(el => el.aisle == aisle),
+      }))
+
+      // counter for ingredient card key
+      var i = 0
+
       ingredientsView = (
         <>
-          {this.props.ingredients.map((ingredient, i) => (
-            <Card
-              key={i}
-              image={ingredient.image}
-              text={ingredient.name}
-              selectable={this.state.selectMode}
-              selected={this.state.selectedButtons[i]}
-              onClick={() => this.toggleButtonSelect(i)}
-            />
-          ))}
+          {categorizedIngredients.map(el => [
+            <h3>{el.aisle}</h3>,
+            ...el.ingredients.map(ingredient => {
+              var j = i++
+              return (
+                <Card
+                  key={j}
+                  image={ingredient.image}
+                  text={ingredient.name}
+                  selectable={this.state.selectMode}
+                  selected={this.state.selectedButtons[j]}
+                  onClick={() => this.toggleButtonSelect(j)}
+                />
+              )
+            }),
+          ])}
         </>
       )
     }
@@ -191,11 +207,15 @@ class IngredientsPage extends Component {
               padding: 0 16px 24px 16px;
             `}
           >
-            <div className={css`
-              height: max-content;
-              width: 100%;
-              padding-bottom: 180px;
-            `}>{ingredientsView}</div>
+            <div
+              className={css`
+                height: max-content;
+                width: 100%;
+                padding-bottom: 180px;
+              `}
+            >
+              {ingredientsView}
+            </div>
           </div>
         )}
       </Page>
